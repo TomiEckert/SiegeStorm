@@ -41,6 +41,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Abstracts\GameObject.cs" />
+    <Compile Include="Abstracts\GameScreen.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />
     <Compile Include="Managers\StringManager.cs" />
