@@ -30,6 +30,12 @@ namespace SiegeStorm
         protected override void Initialize()
         {
             base.Initialize();
+            var screenWidth = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+            var screenHeight = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Height;
+            Graphics.PreferredBackBufferWidth = screenWidth;
+            Graphics.PreferredBackBufferHeight = screenHeight;
+            Graphics.ApplyChanges();
+            Graphics.ToggleFullScreen();
         }
 
         /// <summary>
@@ -49,6 +55,8 @@ namespace SiegeStorm
         /// <param name="gameTime">Snapshot of game time</param>
         protected override void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.Q))
+                Exit();
             ScreenManager.Update(gameTime);
         }
 
