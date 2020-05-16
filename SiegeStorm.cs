@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Managers;
+using System;
 
 namespace SiegeStorm
 {
@@ -17,11 +18,18 @@ namespace SiegeStorm
         public static SpriteBatch SpriteBatch;
         public static ContentManager ContentManager;
 
+        public static int ScreenWidth;
+        public static int ScreenHeight;
+
+        private GameCursor cursor;
+        private FrameCounter frameCounter;
+
         public SiegeStorm()
         {
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             ContentManager = Content;
+            frameCounter = new FrameCounter();
         }
 
         /// <summary>
@@ -30,12 +38,14 @@ namespace SiegeStorm
         protected override void Initialize()
         {
             base.Initialize();
-            var screenWidth = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Width;
-            var screenHeight = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Height;
-            Graphics.PreferredBackBufferWidth = screenWidth;
-            Graphics.PreferredBackBufferHeight = screenHeight;
+            ScreenWidth = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+            ScreenHeight = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Height;
+            Graphics.PreferredBackBufferWidth = ScreenWidth;
+            Graphics.PreferredBackBufferHeight = ScreenHeight;
             Graphics.ApplyChanges();
-            Graphics.ToggleFullScreen();
+            //Graphics.ToggleFullScreen();
+            IsFixedTimeStep = true;
+            TargetElapsedTime = TimeSpan.FromSeconds(1f / 144f);
         }
 
         /// <summary>
@@ -43,10 +53,14 @@ namespace SiegeStorm
         /// </summary>
         protected override void LoadContent()
         {
+            ScreenWidth = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+            ScreenHeight = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Height;
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            SoundManager.LoadContent();
+            //SoundManager.LoadContent();
             TextureManager.LoadContent();
             StringManager.LoadContent();
+            ScreenManager.LoadContent();
+            cursor = new GameCursor();
         }
 
         /// <summary>
@@ -58,6 +72,7 @@ namespace SiegeStorm
             if (Keyboard.GetState().IsKeyDown(Keys.Q))
                 Exit();
             ScreenManager.Update(gameTime);
+            cursor.Update(gameTime);
         }
 
         /// <summary>
@@ -69,6 +84,10 @@ namespace SiegeStorm
             GraphicsDevice.Clear(Color.Black);
             SpriteBatch.Begin();
             ScreenManager.Draw(gameTime);
+            cursor.Draw(gameTime);
+            frameCounter.Update(gameTime);
+            var fps = string.Format("FPS: {0}", Math.Round(frameCounter.AverageFramesPerSecond, 2));
+            SpriteBatch.DrawString(StringManager.GetFont(), fps, new Vector2(1, 1), Color.White);
             SpriteBatch.End();
         }
     }

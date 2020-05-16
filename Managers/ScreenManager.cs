@@ -12,13 +12,21 @@ namespace SiegeStorm.Managers
     /// </summary>
     public class ScreenManager
     {
+        GameScreen currentScreen;
+        Dictionary<string, GameScreen> gameScreens;
+
+        public ScreenManager()
+        {
+            gameScreens = new Dictionary<string, GameScreen>();
+        }
+
         /// <summary>
         /// Updates the current screen.
         /// </summary>
         /// <param name="gameTime">Snapshot of game time</param>
         public void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            currentScreen.Update(gameTime);
         }
 
         /// <summary>
@@ -27,7 +35,26 @@ namespace SiegeStorm.Managers
         /// <param name="gameTime">Snapshot of game time</param>
         public void Draw(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            currentScreen.Draw(gameTime);
+        }
+
+        public void LoadContent()
+        {
+            gameScreens.Add("MainMenu", new Screens.MainMenu());
+
+            // TODO manually add gameScreens and set current to MainMenu
+
+            foreach (var gameScreen in gameScreens) {
+                gameScreen.Value.LoadContent();
+            }
+            ChangeScreenTo("MainMenu");
+        }
+
+        public void ChangeScreenTo(string screen)
+        {
+            if(gameScreens.ContainsKey(screen)) {
+                currentScreen = gameScreens[screen];
+            }
         }
     }
 }
