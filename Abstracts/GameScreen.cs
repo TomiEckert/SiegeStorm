@@ -52,6 +52,8 @@ namespace SiegeStorm
             }
         }
 
+        internal abstract void LoadContent();
+
         public virtual void Draw(GameTime gameTime)
         {
             foreach (var gameObject in gameObjects) {
