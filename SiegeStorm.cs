@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SiegeStorm.GameObjects.MainMenu;
 using SiegeStorm.Managers;
 using System;
 
@@ -9,6 +10,7 @@ namespace SiegeStorm
 {
     public class SiegeStorm : Game
     {
+        public static SiegeStorm Instance;
         public static readonly TextureManager TextureManager = new TextureManager();
         public static readonly SoundManager SoundManager = new SoundManager();
         public static readonly StringManager StringManager = new StringManager();
@@ -26,6 +28,7 @@ namespace SiegeStorm
 
         public SiegeStorm()
         {
+            Instance = this;
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             ContentManager = Content;
@@ -43,9 +46,8 @@ namespace SiegeStorm
             Graphics.PreferredBackBufferWidth = ScreenWidth;
             Graphics.PreferredBackBufferHeight = ScreenHeight;
             Graphics.ApplyChanges();
-            //Graphics.ToggleFullScreen();
+            Graphics.ToggleFullScreen();
             IsFixedTimeStep = true;
-            TargetElapsedTime = TimeSpan.FromSeconds(1f / 144f);
         }
 
         /// <summary>
