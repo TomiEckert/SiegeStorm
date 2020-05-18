@@ -46,7 +46,7 @@ namespace SiegeStorm
             Graphics.PreferredBackBufferWidth = ScreenWidth;
             Graphics.PreferredBackBufferHeight = ScreenHeight;
             Graphics.ApplyChanges();
-            Graphics.ToggleFullScreen();
+            //Graphics.ToggleFullScreen();
             IsFixedTimeStep = true;
         }
 
