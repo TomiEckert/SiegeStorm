@@ -15,7 +15,7 @@ namespace SiegeStorm.GameObjects.MainMenu
 
         public override void Pressed()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

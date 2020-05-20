@@ -32,5 +32,10 @@ namespace SiegeStorm.Screens
         {
             SiegeStorm.SoundManager.PlaySong("MainMenu");
         }
+
+        public override void ScreenClose()
+        {
+            SiegeStorm.SoundManager.StopSong();
+        }
     }
 }

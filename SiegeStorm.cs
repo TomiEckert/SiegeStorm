@@ -78,6 +78,7 @@ namespace SiegeStorm
             if (Keyboard.GetState().IsKeyDown(Keys.Q))
                 Exit();
             ScreenManager.Update(gameTime);
+            SoundManager.Update(gameTime);
             cursor.Update(gameTime);
         }
 
