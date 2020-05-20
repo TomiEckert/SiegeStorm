@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using SiegeStorm.GameObjects.MainMenu;
 using SiegeStorm.Managers;
 using System;
@@ -25,6 +26,8 @@ namespace SiegeStorm
 
         private GameCursor cursor;
         private FrameCounter frameCounter;
+
+        Song song;
 
         public SiegeStorm()
         {
@@ -63,7 +66,20 @@ namespace SiegeStorm
             StringManager.LoadContent();
             ScreenManager.LoadContent();
             cursor = new GameCursor();
+            this.song = Content.Load<Song>("awesomeness");
+            MediaPlayer.Play(song);
+            //  Uncomment the following line will also loop the song
+            //  MediaPlayer.IsRepeating = true;
+            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
         }
+
+        void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
+        {
+            // 0.0f is silent, 1.0f is full volume
+            MediaPlayer.Volume -= 0.1f;
+            MediaPlayer.Play(song);
+        }
+
 
         /// <summary>
         /// Updates the game's logic
