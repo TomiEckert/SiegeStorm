@@ -7,7 +7,7 @@ namespace SiegeStorm.GameObjects.MainMenu
     {
         public ButtonSettings()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture()); //Replace Texture
+            SetTexture(SiegeStorm.TextureManager.GetTexture("settingsButton")); //Replace Texture
             var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
             var y = SiegeStorm.ScreenHeight / 10 * 7 - Texture.Height;
             SetPosition(new Vector2(x, y));
@@ -15,7 +15,7 @@ namespace SiegeStorm.GameObjects.MainMenu
 
         public override void Pressed()
         {
-            throw new NotImplementedException();
+            SiegeStorm.ScreenManager.ChangeScreenTo("SettingsMenu");
         }
     }
 }

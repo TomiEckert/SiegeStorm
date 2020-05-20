@@ -41,7 +41,7 @@ namespace SiegeStorm.Managers
         public void LoadContent()
         {
             gameScreens.Add("MainMenu", new Screens.MainMenu());
-
+            gameScreens.Add("SettingsMenu", new Screens.SettingsMenu());
             // TODO manually add gameScreens and set current to MainMenu
 
             foreach (var gameScreen in gameScreens) {

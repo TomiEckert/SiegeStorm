@@ -70,15 +70,14 @@ namespace SiegeStorm
             cursor = new GameCursor();
             this.song = Content.Load<Song>("awesomeness");
             MediaPlayer.Play(song);
-            //  Uncomment the following line will also loop the song
-            //  MediaPlayer.IsRepeating = true;
+            MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
         }
 
         void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
         {
             // 0.0f is silent, 1.0f is full volume
-            MediaPlayer.Volume -= 0.1f;
+            MediaPlayer.Volume = 0.1f;
             MediaPlayer.Play(song);
         }
 
