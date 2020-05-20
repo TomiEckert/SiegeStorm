@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiegeStorm.Screens
+namespace SiegeStorm.GameObjects.Levels
 {
-    class Settings : GameScreen
+    class Level1 : GameLevel
     {
-        internal override void LoadContent()
+        public override void Run()
         {
             throw new NotImplementedException();
         }

@@ -16,13 +16,15 @@ namespace SiegeStorm
         public static readonly SoundManager SoundManager = new SoundManager();
         public static readonly StringManager StringManager = new StringManager();
         public static readonly ScreenManager ScreenManager = new ScreenManager();
-        
+        public static readonly LevelManager LevelManager = new LevelManager();
+
         public static GraphicsDeviceManager Graphics;
         public static SpriteBatch SpriteBatch;
         public static ContentManager ContentManager;
 
         public static int ScreenWidth;
         public static int ScreenHeight;
+        public static bool FpsIsOn;
 
         private GameCursor cursor;
         private FrameCounter frameCounter;
@@ -63,6 +65,7 @@ namespace SiegeStorm
             TextureManager.LoadContent();
             StringManager.LoadContent();
             ScreenManager.LoadContent();
+            LevelManager.LoadContent();
             cursor = new GameCursor();
         }
 
@@ -89,8 +92,11 @@ namespace SiegeStorm
             ScreenManager.Draw(gameTime);
             cursor.Draw(gameTime);
             frameCounter.Update(gameTime);
-            var fps = string.Format("FPS: {0}", Math.Round(frameCounter.AverageFramesPerSecond, 2));
-            SpriteBatch.DrawString(StringManager.GetFont(), fps, new Vector2(1, 1), Color.White);
+            if (FpsIsOn)
+            {
+                var fps = string.Format("FPS: {0}", Math.Round(frameCounter.AverageFramesPerSecond, 2));
+                SpriteBatch.DrawString(StringManager.GetFont(), fps, new Vector2(1, 1), Color.White);
+            }
             SpriteBatch.End();
         }
     }

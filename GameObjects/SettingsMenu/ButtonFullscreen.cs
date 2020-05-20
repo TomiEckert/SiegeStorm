@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace SiegeStorm.GameObjects.MainMenu
+namespace SiegeStorm.GameObjects.SettingsMenu
 {
-    class ButtonStart : GameButton
+    class ButtonFullscreen : GameButton
     {
-        public ButtonStart()
+        public ButtonFullscreen()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture("playButton")); //Replace Texture
+            SetTexture(SiegeStorm.TextureManager.GetTexture("fullscreenButton"));
             var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
             var y = SiegeStorm.ScreenHeight / 10 * 5 - Texture.Height;
             SetPosition(new Vector2(x, y));
@@ -15,7 +15,7 @@ namespace SiegeStorm.GameObjects.MainMenu
 
         public override void Pressed()
         {
-            throw new NotImplementedException();
+            SiegeStorm.Graphics.ToggleFullScreen();
         }
     }
 }

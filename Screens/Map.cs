@@ -8,9 +8,12 @@ namespace SiegeStorm.Screens
 {
     class Map : GameScreen
     {
+        GameObjects.Map.Level1Node level1;
+
         internal override void LoadContent()
         {
-            throw new NotImplementedException();
+            level1 = new GameObjects.Map.Level1Node();
+            AddObject(level1);
         }
     }
 }
