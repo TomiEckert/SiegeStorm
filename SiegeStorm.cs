@@ -16,7 +16,8 @@ namespace SiegeStorm
         public static readonly SoundManager SoundManager = new SoundManager();
         public static readonly StringManager StringManager = new StringManager();
         public static readonly ScreenManager ScreenManager = new ScreenManager();
-        
+        public static readonly LevelManager LevelManager = new LevelManager();
+
         public static GraphicsDeviceManager Graphics;
         public static SpriteBatch SpriteBatch;
         public static ContentManager ContentManager;
@@ -65,6 +66,7 @@ namespace SiegeStorm
             TextureManager.LoadContent();
             StringManager.LoadContent();
             ScreenManager.LoadContent();
+            LevelManager.LoadContent();
             cursor = new GameCursor();
             this.song = Content.Load<Song>("awesomeness");
             MediaPlayer.Play(song);
