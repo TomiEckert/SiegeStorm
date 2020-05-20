@@ -60,5 +60,15 @@ namespace SiegeStorm
                 gameObject.Draw(gameTime); // TODO Implement draw priority/layers
             }
         }
+
+        public virtual void ScreenOpen()
+        {
+
+        }
+
+        public virtual void ScreenClose()
+        {
+
+        }
     }
 }

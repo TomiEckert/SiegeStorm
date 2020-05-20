@@ -42,21 +42,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Abstracts\GameButton.cs" />
+    <Compile Include="Abstracts\GameLevel.cs" />
     <Compile Include="Abstracts\GameObject.cs" />
     <Compile Include="Abstracts\GameScreen.cs" />
+    <Compile Include="Abstracts\MapNode.cs" />
     <Compile Include="FrameCounter.cs" />
     <Compile Include="GameCursor.cs" />
+    <Compile Include="GameObjects\SettingsMenu\ButtonFullscreen.cs" />
+    <Compile Include="GameObjects\MainMenu\ButtonLoad.cs" />
+    <Compile Include="GameObjects\Levels\Level1.cs" />
     <Compile Include="GameObjects\MainMenu\ButtonExit.cs" />
     <Compile Include="GameObjects\MainMenu\ButtonStart.cs" />
     <Compile Include="GameObjects\MainMenu\ButtonSettings.cs" />
+    <Compile Include="GameObjects\SettingsMenu\ButtonFPS.cs" />
+    <Compile Include="GameObjects\Map\ButtonLevel1.cs" />
+    <Compile Include="GameObjects\Map\Level1Node.cs" />
     <Compile Include="GameObjects\MainMenu\Background.cs" />
     <Compile Include="GameObjects\SettingsMenu\ButtonReturn.cs" />
+    <Compile Include="Managers\LevelManager.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />
     <Compile Include="Managers\StringManager.cs" />
     <Compile Include="Managers\TextureManager.cs" />
     <Compile Include="Screens\SettingsMenu.cs" />
-    <Compile Include="Screens\Settings.cs" />
     <Compile Include="Screens\Map.cs" />
     <Compile Include="Screens\MainMenu.cs" />
     <Compile Include="SiegeStorm.cs" />
@@ -71,6 +79,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Sounds\Songs\MainMenu.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Strings.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -84,6 +95,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Textures\exitButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\fullscreenButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\loadButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Textures\playButton.png">
@@ -102,7 +119,7 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Sounds\" />
+    <Folder Include="Content\Sounds\SoundEffects\" />
     <Folder Include="GameObjects\Map\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
