@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using SiegeStorm.Managers;
 
 namespace SiegeStorm.Screens
 {
@@ -22,6 +23,11 @@ namespace SiegeStorm.Screens
             AddObject(settings);
             exit = new GameObjects.MainMenu.ButtonExit();
             AddObject(exit);
+        }
+
+        public override void ScreenOpen()
+        {
+            SiegeStorm.SoundManager.PlaySong("MainMenu");
         }
     }
 }

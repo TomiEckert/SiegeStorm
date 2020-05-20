@@ -27,8 +27,6 @@ namespace SiegeStorm
         private GameCursor cursor;
         private FrameCounter frameCounter;
 
-        Song song;
-
         public SiegeStorm()
         {
             Instance = this;
@@ -61,24 +59,12 @@ namespace SiegeStorm
             ScreenWidth = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Width;
             ScreenHeight = Graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Height;
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            //SoundManager.LoadContent();
+            SoundManager.LoadContent();
             TextureManager.LoadContent();
             StringManager.LoadContent();
             ScreenManager.LoadContent();
             cursor = new GameCursor();
-            this.song = Content.Load<Song>("awesomeness");
-            MediaPlayer.Play(song);
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
         }
-
-        void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
-        {
-            // 0.0f is silent, 1.0f is full volume
-            MediaPlayer.Volume = 0.1f;
-            MediaPlayer.Play(song);
-        }
-
 
         /// <summary>
         /// Updates the game's logic

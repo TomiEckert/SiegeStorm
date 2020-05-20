@@ -13,12 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin awesomeness.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:awesomeness.mp3
-
 #begin BasicFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor

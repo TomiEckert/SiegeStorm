@@ -53,7 +53,10 @@ namespace SiegeStorm.Managers
         public void ChangeScreenTo(string screen)
         {
             if(gameScreens.ContainsKey(screen)) {
+                if (currentScreen != null)
+                    currentScreen.ScreenClose();
                 currentScreen = gameScreens[screen];
+                currentScreen.ScreenOpen();
             }
         }
     }
