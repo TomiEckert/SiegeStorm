@@ -1,0 +1,28 @@
+﻿using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SiegeStorm.GameObjects.MainMenu
+{
+    class Background : GameButton
+    {
+       public Background()
+        {
+            SetTexture(SiegeStorm.TextureManager.GetTexture("bg"));
+            SetPosition(new Vector2(0, 0));
+        }
+
+        public override void Pressed()
+        {
+            throw new NotImplementedException();
+        }
+        public override void Draw(GameTime gameTime)
+        {
+            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(0,0, SiegeStorm.ScreenWidth, SiegeStorm.ScreenHeight), Color.White);
+
+        }
+    }
+}
