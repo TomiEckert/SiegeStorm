@@ -23,6 +23,7 @@ namespace SiegeStorm
 
         public static int ScreenWidth;
         public static int ScreenHeight;
+        public static bool FpsIsOn;
 
         private GameCursor cursor;
         private FrameCounter frameCounter;
@@ -103,8 +104,11 @@ namespace SiegeStorm
             ScreenManager.Draw(gameTime);
             cursor.Draw(gameTime);
             frameCounter.Update(gameTime);
-            var fps = string.Format("FPS: {0}", Math.Round(frameCounter.AverageFramesPerSecond, 2));
-            SpriteBatch.DrawString(StringManager.GetFont(), fps, new Vector2(1, 1), Color.White);
+            if (FpsIsOn)
+            {
+                var fps = string.Format("FPS: {0}", Math.Round(frameCounter.AverageFramesPerSecond, 2));
+                SpriteBatch.DrawString(StringManager.GetFont(), fps, new Vector2(1, 1), Color.White);
+            }
             SpriteBatch.End();
         }
     }

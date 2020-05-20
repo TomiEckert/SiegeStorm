@@ -46,16 +46,18 @@
     <Compile Include="Abstracts\GameScreen.cs" />
     <Compile Include="FrameCounter.cs" />
     <Compile Include="GameCursor.cs" />
+    <Compile Include="GameObjects\SettingsMenu\ButtonFullscreen.cs" />
+    <Compile Include="GameObjects\MainMenu\ButtonLoad.cs" />
     <Compile Include="GameObjects\MainMenu\ButtonExit.cs" />
     <Compile Include="GameObjects\MainMenu\ButtonStart.cs" />
     <Compile Include="GameObjects\MainMenu\ButtonSettings.cs" />
+    <Compile Include="GameObjects\SettingsMenu\ButtonFPS.cs" />
     <Compile Include="GameObjects\SettingsMenu\ButtonReturn.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />
     <Compile Include="Managers\StringManager.cs" />
     <Compile Include="Managers\TextureManager.cs" />
     <Compile Include="Screens\SettingsMenu.cs" />
-    <Compile Include="Screens\Settings.cs" />
     <Compile Include="Screens\Map.cs" />
     <Compile Include="Screens\MainMenu.cs" />
     <Compile Include="SiegeStorm.cs" />
@@ -80,6 +82,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Textures\exitButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\fullscreenButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\loadButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Textures\playButton.png">
