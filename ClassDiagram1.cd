@@ -1,140 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="SiegeStorm.GameButton">
-    <Position X="9.75" Y="8.75" Width="1.5" />
+    <Position X="14.5" Y="11.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Abstracts\GameButton.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.GameLevel">
-    <Position X="11.5" Y="4" Width="1.5" />
+    <Position X="15.25" Y="1" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAABAAAAAAAAAAAAI=</HashCode>
       <FileName>Abstracts\GameLevel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.GameObject">
-    <Position X="9.75" Y="4" Width="1.5" />
+    <Position X="10.75" Y="8" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAgAAAAIAAAACAAAgAAAAIAAAAAAAA=</HashCode>
       <FileName>Abstracts\GameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.GameScreen">
-    <Position X="13.25" Y="4" Width="1.5" />
+    <Position X="8.5" Y="1" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AQQAACAAAAAAhgAAAAAAAAAABAAAAAAAAAAgAAAAAAQ=</HashCode>
       <FileName>Abstracts\GameScreen.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.MapNode">
-    <Position X="10.25" Y="13.75" Width="1.5" />
+    <Position X="16" Y="14.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAEAAg=</HashCode>
       <FileName>Abstracts\MapNode.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.GameObjects.Levels.Level1">
-    <Position X="11.5" Y="8.75" Width="1.5" />
+    <Position X="15.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>GameObjects\Levels\Level1.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.GameObjects.MainMenu.ButtonExit">
-    <Position X="8.5" Y="13.75" Width="1.5" />
+    <Position X="13.75" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>GameObjects\MainMenu\ButtonExit.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.GameObjects.Map.Level1Node">
-    <Position X="12.25" Y="13.75" Width="1.5" />
+    <Position X="16.25" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Map\Level1Node.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.Managers.LevelManager">
-    <Position X="15" Y="4" Width="1.5" />
+    <Position X="24.5" Y="5.75" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AgAACAAAAAAAAAAAAAAAAAABgAAIAAABAAAAAEAAAAQ=</HashCode>
       <FileName>Managers\LevelManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.Managers.ScreenManager">
-    <Position X="16.75" Y="4" Width="1.5" />
+    <Position X="28.5" Y="1" Width="3.25" />
     <TypeIdentifier>
       <HashCode>gAQAAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAQ=</HashCode>
       <FileName>Managers\ScreenManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.Managers.SoundManager">
-    <Position X="18.5" Y="4" Width="1.5" />
+    <Position X="28.5" Y="3.75" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AgQAAAAAAAkAgEQAAABAAAAAQIAAAAAAAAQAAAAACAQ=</HashCode>
       <FileName>Managers\SoundManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.Managers.StringManager">
-    <Position X="20.25" Y="4" Width="1.5" />
+    <Position X="24.5" Y="1" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAoAAAAAAAAAAAAQAAQ=</HashCode>
       <FileName>Managers\StringManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.Managers.TextureManager">
-    <Position X="22" Y="4" Width="1.5" />
+    <Position X="24.5" Y="3.5" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Managers\TextureManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.Screens.MainMenu">
-    <Position X="13.25" Y="8.75" Width="1.5" />
+    <Position X="6.25" Y="4.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAIgAAAAAAAAAACAAAAAAAAgACAAAAQ=</HashCode>
       <FileName>Screens\MainMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.Screens.Map">
-    <Position X="15" Y="8.75" Width="1.5" />
+    <Position X="9.25" Y="4.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Screens\Map.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.Screens.SettingsMenu">
-    <Position X="16.75" Y="8.75" Width="1.5" />
+    <Position X="11.75" Y="4.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAAAAAAAQ=</HashCode>
       <FileName>Screens\SettingsMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.FrameCounter">
-    <Position X="8" Y="8.75" Width="1.5" />
+    <Position X="10" Y="11.75" Width="3" />
     <TypeIdentifier>
       <HashCode>CAQAAAAAAAAACACAAAIAAAAAAAAAAAAAAQABAAAAAAA=</HashCode>
       <FileName>FrameCounter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.GameCursor">
-    <Position X="6.25" Y="8.75" Width="1.5" />
+    <Position X="6.5" Y="11.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameCursor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.Program">
-    <Position X="8.75" Y="1" Width="1.5" />
+    <Position X="22" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiegeStorm.SiegeStorm">
-    <Position X="7" Y="1" Width="1.5" />
+    <Position X="19" Y="1" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAEBEA4EABAAAAAQACABCAABAQAAAAAAAAAQ=</HashCode>
       <FileName>SiegeStorm.cs</FileName>
