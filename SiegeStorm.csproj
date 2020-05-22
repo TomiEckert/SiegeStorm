@@ -55,7 +55,6 @@
     <Compile Include="GameObjects\MainMenu\ButtonStart.cs" />
     <Compile Include="GameObjects\MainMenu\ButtonSettings.cs" />
     <Compile Include="GameObjects\SettingsMenu\ButtonFPS.cs" />
-    <Compile Include="GameObjects\Map\ButtonLevel1.cs" />
     <Compile Include="GameObjects\Map\Level1Node.cs" />
     <Compile Include="GameObjects\MainMenu\Background.cs" />
     <Compile Include="GameObjects\SettingsMenu\ButtonReturn.cs" />
@@ -120,6 +119,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
