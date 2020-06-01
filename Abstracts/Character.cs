@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SiegeStorm.GameObjects.Items;
+using SiegeStorm.GameObjects.Items.Weapon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,14 +14,17 @@ namespace SiegeStorm.Abstracts
         string name;
         int level;
         int basePower;
-        List<Item> equiptment;
+        Item armor;
+        Item weapon;
 
-        public Character(string name, int basePower)
+        public Character(string name)
         {
             this.name = name;
             this.level = 1;
             this.basePower = 1;
-            this.equiptment = new List<Item>();
+            this.armor = new DefaultArmor();
+            this.weapon = new DefaultWeapon();
         }
+
     }
 }

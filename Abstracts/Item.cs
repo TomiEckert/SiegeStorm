@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm.Abstracts
 {
-    class Item: GameObject
+    abstract class Item: GameObject
     {
         string name;
         string description { get; set; }
