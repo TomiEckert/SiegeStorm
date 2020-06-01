@@ -26,5 +26,10 @@ namespace SiegeStorm.Abstracts
             this.weapon = new DefaultWeapon();
         }
 
+        public void LevelUp()
+        {
+            this.level++;
+            this.basePower += 5;
+        }
     }
 }
