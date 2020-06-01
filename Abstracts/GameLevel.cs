@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm
 {
-    public abstract class GameLevel
+    public abstract class GameLevel: GameScreen
     {
         public bool IsCompleted;
         public GameLevel()

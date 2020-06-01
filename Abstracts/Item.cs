@@ -15,11 +15,12 @@ namespace SiegeStorm.Abstracts
         int weight;
         bool isArmor;
 
-        public Item(string name, string description, int statValue, int weight) {
+        public Item(string name, string description, int statValue, int weight, bool isArmor) {
             this.name = name;
             this.description = description;
             this.statValue = statValue;
             this.weight = weight;
+            this.isArmor = isArmor;
         }
 
         public void Equip(Player ch)
@@ -46,13 +47,13 @@ namespace SiegeStorm.Abstracts
             }
         }
 
-        public string getName(){
+        public string GetName(){
             return this.name;
         }
-        public int getPower(){
+        public int GetPower(){
             return this.statValue;
         }
-        public int getWeight()
+        public int GetWeight()
         {
             return weight;
         }

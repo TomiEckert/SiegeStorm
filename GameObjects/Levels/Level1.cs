@@ -12,5 +12,10 @@ namespace SiegeStorm.GameObjects.Levels
         {
             throw new NotImplementedException();
         }
+
+        internal override void LoadContent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
