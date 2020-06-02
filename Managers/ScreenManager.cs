@@ -42,6 +42,7 @@ namespace SiegeStorm.Managers
         {
             gameScreens.Add("MainMenu", new Screens.MainMenu());
             gameScreens.Add("SettingsMenu", new Screens.SettingsMenu());
+            gameScreens.Add("Map", new Screens.Map());
             // TODO manually add gameScreens and set current to MainMenu
 
             foreach (var gameScreen in gameScreens) {

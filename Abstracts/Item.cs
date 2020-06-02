@@ -23,39 +23,42 @@ namespace SiegeStorm.Abstracts
             this.isArmor = isArmor;
         }
 
-        public void Equip(Player ch)
+        //Getters
+        public string GetName()
         {
-            if (isArmor)
-            {
-                // TODO increase health by statValue
-            }
-            else
-            {
-                // TODO increase attack by statValue
-            }
-        }
-
-        public void Unequip(Player ch)
-        {
-            if (isArmor)
-            {
-                // TODO decrease health by statValue
-            }
-            else
-            {
-                // TODO decrease attack by statValue
-            }
-        }
-
-        public string GetName(){
             return this.name;
         }
-        public int GetPower(){
+        public string GetDescription()
+        {
+            return this.description;
+        }
+        public int GetPower()
+        {
             return this.statValue;
         }
         public int GetWeight()
         {
             return weight;
         }
+        public int GetStatValue()
+        {
+            return this.statValue;
+        }
+        public bool GetIsArmor()
+        {
+            return this.isArmor;
+        }
+
+        //Equipping this to player
+        public void Equip(Player ch)
+        {
+            ch.EquipItem(this);
+        }
+        //Unequipping this from player
+        public void Unequip(Player ch)
+        {
+            ch.UnequipItem(this);
+        }
+
     }
 }

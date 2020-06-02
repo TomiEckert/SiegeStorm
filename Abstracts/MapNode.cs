@@ -14,8 +14,12 @@ namespace SiegeStorm
 
         public MapNode(string name)
         {
-            level = SiegeStorm.LevelManager.GetLevel(name);
-            isLocked = SiegeStorm.LevelManager.GetLocked(name);
+            //TODO add levels to level manager
+            /*  Currently game does not run with the following uncommented
+             * 
+             *  level = SiegeStorm.LevelManager.GetLevel(name);
+             *  isLocked = SiegeStorm.LevelManager.GetLocked(name);
+             */
         }
         
         public override void Pressed()
