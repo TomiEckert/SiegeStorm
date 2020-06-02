@@ -12,6 +12,9 @@ namespace SiegeStorm.Screens
     class InventoryAndShop : GameScreen
     {
         GameObjects.SettingsMenu.ButtonReturn returnButton;
+        GameObjects.InventoryAndShop.ButtonBuy buttonBuy;
+        GameObjects.InventoryAndShop.ButtonSell buttonSell;
+
         List<Item> inventoryItems = new List<Item>();
         int maxCapacity = 20;
     
