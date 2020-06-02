@@ -8,20 +8,14 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SiegeStorm.Screens
 {
-    class Inventory : GameScreen
+    class Shop : GameScreen
     {
         GameObjects.SettingsMenu.ButtonReturn returnButton;
-        GameObjects.SettingsMenu.ButtonFullscreen fullscreenButton;
-        GameObjects.SettingsMenu.ButtonFPS fpsButton;
     
         internal override void LoadContent()
         {
             returnButton = new GameObjects.SettingsMenu.ButtonReturn();
             AddObject(returnButton);
-            fullscreenButton = new GameObjects.SettingsMenu.ButtonFullscreen();
-            AddObject(fullscreenButton);
-            fpsButton = new GameObjects.SettingsMenu.ButtonFPS();
-            AddObject(fpsButton);
         }
     }
 }
