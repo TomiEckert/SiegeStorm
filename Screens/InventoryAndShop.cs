@@ -11,17 +11,13 @@ namespace SiegeStorm.Screens
     class InventoryAndShop : GameScreen
     {
         GameObjects.SettingsMenu.ButtonReturn returnButton;
-        GameObjects.SettingsMenu.ButtonFullscreen fullscreenButton;
-        GameObjects.SettingsMenu.ButtonFPS fpsButton;
+        GameObjects.InventoryAndShop.ButtonBuy buyButton;
+        GameObjects.InventoryAndShop.ButtonSell sellButton;
     
         internal override void LoadContent()
         {
             returnButton = new GameObjects.SettingsMenu.ButtonReturn();
             AddObject(returnButton);
-            fullscreenButton = new GameObjects.SettingsMenu.ButtonFullscreen();
-            AddObject(fullscreenButton);
-            fpsButton = new GameObjects.SettingsMenu.ButtonFPS();
-            AddObject(fpsButton);
         }
     }
 }

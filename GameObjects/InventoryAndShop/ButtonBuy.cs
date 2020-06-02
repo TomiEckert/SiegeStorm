@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace SiegeStorm.GameObjects.MainMenu
+namespace SiegeStorm.GameObjects.InventoryAndShop
 {
-    class ButtonStart : GameButton
+    class ButtonBuy : GameButton
     {
-        public ButtonStart()
+        public ButtonBuy()
         {
             SetTexture(SiegeStorm.TextureManager.GetTexture("playButton"));
             var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
@@ -14,7 +14,7 @@ namespace SiegeStorm.GameObjects.MainMenu
         }
         public override void Pressed()
         {
-            SiegeStorm.ScreenManager.ChangeScreenTo("Map");
+            
         }
     }
 }
