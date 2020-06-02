@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SiegeStorm.Screens
 {
-    class Inventory : GameScreen
+    class InventoryAndShop : GameScreen
     {
         GameObjects.SettingsMenu.ButtonReturn returnButton;
         GameObjects.SettingsMenu.ButtonFullscreen fullscreenButton;
