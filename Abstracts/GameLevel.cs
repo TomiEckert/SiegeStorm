@@ -10,12 +10,7 @@ namespace SiegeStorm
     {
         internal bool IsCompleted;
         internal bool IsLocked;
-
-        public GameLevel()
-        {
-            this.IsCompleted = false;
-            this.IsLocked = true;
-        }
+        
         public GameLevel(bool isCompleted, bool isLocked)
         {
             this.IsCompleted = isCompleted;
@@ -25,7 +20,11 @@ namespace SiegeStorm
         public void Complete()
         {
             this.IsCompleted = true;
-            //SiegeStorm.LevelManager.UnlockNext(this);
+        }
+
+        void Unlock()
+        {
+            this.IsLocked = false;
         }
 
         public abstract void Run();

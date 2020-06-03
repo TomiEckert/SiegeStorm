@@ -13,6 +13,11 @@ namespace SiegeStorm.GameObjects.Levels
         int levelTop;
         Lane[] lanes;
         
+        public Level(bool isCompleted, bool isLocked): base(isCompleted, isLocked)
+        {
+
+        }
+
         public override void Run()
         {
             throw new NotImplementedException();
@@ -45,6 +50,11 @@ namespace SiegeStorm.GameObjects.Levels
         public override void ScreenClose()
         {
             RemoveObject(SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault());
+        }
+
+        public string ToLine()
+        {
+            return "" + this.IsCompleted + ":" + this.IsLocked;
         }
     }
 }
