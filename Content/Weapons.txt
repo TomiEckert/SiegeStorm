@@ -1,1 +1,2 @@
-﻿
+﻿# NAME:DESCRIPTION:STAT_VALUE:PRICE
+Wooden Stick:Simple wooden stick, mostly used for poking bears.:0:0

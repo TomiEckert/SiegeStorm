@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace SiegeStorm
 {
@@ -14,6 +15,9 @@ namespace SiegeStorm
         [STAThread]
         static void Main()
         {
+#if DEBUG
+            Task.Run(() => { new DebugConsole().RunConsole(); });
+#endif
             using (var game = new SiegeStorm())
                 game.Run();
         }

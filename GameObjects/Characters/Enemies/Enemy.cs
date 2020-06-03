@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Characters.Enemies
 {
-    class Enemy: Character
+    public class Enemy: Character
     {
         public Enemy(): base("Enemy Lvl 1")
         {

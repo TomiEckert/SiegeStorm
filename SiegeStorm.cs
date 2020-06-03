@@ -68,8 +68,8 @@ namespace SiegeStorm
             StringManager.LoadContent();
             ScreenManager.LoadContent();
             LevelManager.LoadContent();
-            PlayerManager.LoadContent();
             ItemManager.LoadContent();
+            PlayerManager.LoadContent();
             cursor = new GameCursor();
         }
 

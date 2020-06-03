@@ -24,10 +24,10 @@ namespace SiegeStorm.GameObjects.Characters.Players
         {
             this.xp = 0;
             this.gold = 50;
-            this.armor = SiegeStorm.ItemManager.GetArmor("defaultArmor");
-            this.weapon = SiegeStorm.ItemManager.GetWeapon("defaultWeapon");
-            this.setHealth();
-            this.setPower();
+            this.armor = SiegeStorm.ItemManager.GetArmor("Cotton Outfit");
+            this.weapon = SiegeStorm.ItemManager.GetWeapon("Wooden Stick");
+            this.SetHealth();
+            this.SetPower();
 
             //TODO set texture
             SetTexture(SiegeStorm.TextureManager.GetTexture());
@@ -37,17 +37,17 @@ namespace SiegeStorm.GameObjects.Characters.Players
             SetPosition(new Vector2(x, y));
         }
 
-        internal void setPositionY(int position)
+        public void SetVerticalPosition(int position)
         {
             SetPosition(new Vector2(Position.X, position));
         }
 
-        internal void setLane(int lane)
+        public void SetLane(int lane)
         {
             currentLane = lane;
         }
 
-        internal int getLane()
+        public int GetLane()
         {
             return currentLane;
         }
@@ -56,21 +56,21 @@ namespace SiegeStorm.GameObjects.Characters.Players
         //TODO attack
 
         //Setters
-        void setHealth() 
+        void SetHealth() 
         {
             this.health = this.GetBaseHealth() + this.armor.GetStatValue();
         }
-        void setPower()
+        void SetPower()
         {
             this.power = this.GetBasePower() + this.weapon.GetStatValue();
         }
 
-        public Inventory getInventory()
+        public Inventory GetInventory()
         {
             return inventory;
         }
         
-        public void setInventory(Inventory newInventory)
+        public void SetInventory(Inventory newInventory)
         {
             inventory = newInventory;
         }
@@ -79,7 +79,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         public void EquipItem(Item item)
         {
             UnequipItem(item);
-            if (item.GetIsArmor())
+            if (item.GetType() == typeof(Armor))
             {
                 this.armor = (Armor)item;
                 this.health += item.GetStatValue();
@@ -93,7 +93,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         //Unequipping item, changing corresponding stats (health / power)
         public void UnequipItem(Item item)
         {
-            if (item.GetIsArmor())
+            if (item.GetType() == typeof(Armor))
             {
                 this.health -= armor.GetStatValue();
             }
@@ -110,8 +110,8 @@ namespace SiegeStorm.GameObjects.Characters.Players
             {
                 this.xp -= this.getLevel() * 100;
                 this.LevelUp();
-                this.setHealth();
-                this.setPower();
+                this.SetHealth();
+                this.SetPower();
             }
         }
 

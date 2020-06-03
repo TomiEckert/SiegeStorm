@@ -17,6 +17,7 @@ namespace SiegeStorm.Managers
         {
             strings = new Dictionary<string, string>();
             fonts = new Dictionary<string, SpriteFont>();
+
             var font = SiegeStorm.ContentManager.Load<SpriteFont>("BasicFont");
             fonts.Add("Default", font);
 

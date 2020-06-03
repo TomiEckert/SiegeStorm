@@ -2,6 +2,7 @@
 using SiegeStorm.GameObjects.Items;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,27 +11,66 @@ namespace SiegeStorm.Managers
 {
     public class ItemManager
     {
-        Dictionary<string, Armor> Armor = new Dictionary<string, Armor>();
-        Dictionary<string, Weapon> Weapons = new Dictionary<string, Weapon>();
+        private Dictionary<string, Armor> Armor = new Dictionary<string, Armor>();
+        private Dictionary<string, Weapon> Weapons = new Dictionary<string, Weapon>();
 
         public void LoadContent()
         {
-
+            GenerateArmor();
+            GenerateWeapon();
         }
 
-        void GenerateArmor() 
-        { 
-            //TODO
-        }
-
-        void GenerateWeapon()
+        private void GenerateArmor() 
         {
-            //TODO
+            var items = ReadItems("Armor.txt");
+            Armor = new Dictionary<string, Armor>();
+            foreach (var item in items)
+            {
+                var armor = new Armor(item);
+                var name = item[0];
+                Armor.Add(name, armor);
+            }
         }
 
-        void GenerateItems()
+        private void GenerateWeapon()
         {
-            //TODO
+            var items = ReadItems("Weapons.txt");
+            Weapons = new Dictionary<string, Weapon>();
+            foreach (var item in items)
+            {
+                var weapon = new Weapon(item);
+                var name = item[0];
+                Weapons.Add(name, weapon);
+            }
+        }
+
+        private List<string[]> ReadItems(string file)
+        {
+            var text = File.ReadAllLines("Content/" + file);
+            List<string[]> items = new List<string[]>();
+            foreach (var i in text)
+            {
+                if (i[0] == '#')
+                    continue;
+
+                var attributes = i.Split(':');
+                if (attributes.Count() != 4)
+                    continue;
+                
+                var name = attributes[0];
+                var description = attributes[1];
+                
+                var stat = 0;
+                if (!int.TryParse(attributes[2], out stat))
+                    continue;
+
+                var price = 0;
+                if (!int.TryParse(attributes[3], out price))
+                    continue;
+
+                items.Add(attributes);
+            }
+            return items;
         }
 
         public Armor GetArmor(string name)

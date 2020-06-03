@@ -10,15 +10,22 @@ namespace SiegeStorm.Managers
     public class PlayerManager 
     {
 
-        List<Player> ListOfPlayers = new List<Player>();
+        Dictionary<string, Player> players = new Dictionary<string, Player>();
         public void LoadContent()
         {
-
+            var p = new Player("one");
         }
 
         public Player[] GetPlayers()
         {
-            return ListOfPlayers.ToArray();
+            return players.Values.ToArray();
+        }
+
+        public Player GetPlayer(string name)
+        {
+            if (players.ContainsKey(name))
+                return players[name];
+            return null;
         }
     }
 }

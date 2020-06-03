@@ -52,6 +52,11 @@ namespace SiegeStorm.Managers
             ChangeScreenTo("MainMenu");
         }
 
+        public string[] GetScreenNames()
+        {
+            return gameScreens.Keys.ToArray();
+        }
+
         public void ChangeScreenTo(string screen)
         {
             if(gameScreens.ContainsKey(screen)) {
@@ -60,6 +65,23 @@ namespace SiegeStorm.Managers
                 currentScreen = gameScreens[screen];
                 currentScreen.ScreenOpen();
             }
+        }
+
+        /// <summary>
+        /// DO NOT USE FOR GAME
+        /// ONLY FOR DEBUGGING
+        /// </summary>
+        /// <returns></returns>
+        public string GetCurrentScreenName()
+        {
+            if (currentScreen != null)
+                return gameScreens.FirstOrDefault(x => x.Value == currentScreen).Key;
+            return null;
+        }
+
+        public GameScreen GetCurrentScreen()
+        {
+            return currentScreen;
         }
     }
 }

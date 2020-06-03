@@ -31,13 +31,13 @@ namespace SiegeStorm.Screens
         public override void ScreenOpen()
         {
             // TODO: Multiplayer
-            inventory = SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().getInventory();
+            inventory = SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().GetInventory();
         }
 
         public override void ScreenClose()
         {
             //TODO : Multiplayer
-            SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().setInventory(inventory);
+            SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().SetInventory(inventory);
         }
 
         

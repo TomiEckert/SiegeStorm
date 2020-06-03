@@ -8,26 +8,29 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Levels
 {
-    class Lane : GameObject
+    public class Lane : GameObject
     {
-        int position;
-        int maxAmountEnemies;
-        List<Enemy> enemies;
+        private int position;
+        private List<Enemy> enemies;
 
-        public Lane(int position)
+        public void SetEnemies(List<Enemy> enemies)
         {
-            this.position = position;
-            enemies = new List<Enemy>();
+            this.enemies = enemies;
         }
 
-        public int getPosition()
+        public void SetPosition(int position)
+        {
+            this.position = position;
+        }
+
+        public int GetPosition()
         {
             return position;
         }
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+
         }
 
     }

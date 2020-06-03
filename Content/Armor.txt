@@ -1,5 +1,6 @@
-﻿Cotton Outfit:Normal clothes, not giving any protection or power.:0:0:true
-Leather Armor:Leather Armor, gives slight protection against damage:10:100:true
-Iron Armor:Iron Armor, gives protection against damage:25:250:true
-Diamond Armor:Diamond Armor, gives a lot of protection against damage:50:500:true
-God Armor: God Armor, this armor was created by the gods and gives insane protection:100:1000:true
+﻿# NAME:DESCRIPTION:STAT_VALUE:PRICE
+Cotton Outfit:Normal clothes, not giving any protection or power.:0:0
+Leather Armor:Leather Armor, gives slight protection against damage:10:100
+Iron Armor:Iron Armor, gives protection against damage:25:250
+Diamond Armor:Diamond Armor, gives a lot of protection against damage:50:500
+God Armor: God Armor, this armor was created by the gods and gives insane protection:100:1000

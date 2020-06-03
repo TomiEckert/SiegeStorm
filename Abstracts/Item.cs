@@ -13,14 +13,12 @@ namespace SiegeStorm.Abstracts
         string description;
         int statValue;
         int price;
-        bool isArmor;
 
-        public Item(string name, string description, int statValue, int price, bool isArmor) {
+        public Item(string name, string description, int statValue, int price) {
             this.name = name;
             this.description = description;
             this.statValue = statValue;
             this.price = price;
-            this.isArmor = isArmor;
         }
 
         //Getters
@@ -43,10 +41,6 @@ namespace SiegeStorm.Abstracts
         public int GetStatValue()
         {
             return this.statValue;
-        }
-        public bool GetIsArmor()
-        {
-            return this.isArmor;
         }
 
         //Equipping this to player

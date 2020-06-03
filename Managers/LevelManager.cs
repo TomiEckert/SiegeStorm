@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SiegeStorm.GameObjects.Characters.Enemies;
 using SiegeStorm.GameObjects.Levels;
 using System;
 using System.Collections.Generic;
@@ -12,40 +13,151 @@ namespace SiegeStorm.Managers
 {
     public class LevelManager
     {
-        List<Level> levels;
+        Dictionary<string, Level> levels;
+        Dictionary<string, LevelData> levelData;
 
-        string textfile;
+        const string FILE = "Content/Levels.txt";
 
         public void LoadContent()
         {
-            this.levels = new List<Level>();
-            this.textfile = "../Content/Levels.txt";
-            constructLevels();
+            levels = new Dictionary<string, Level>();
+            levelData = new Dictionary<string, LevelData>();
+            LoadLevels();
         }
 
-        void constructLevels()
+        private void LoadLevels()
         {
-            string[] lines = System.IO.File.ReadAllLines(textfile);
+            var lines = File.ReadAllLines(FILE);
             foreach (var line in lines)
             {
-                string[] words = line.Split(':');
-                //TODO adjust parameters
-                var level = new Level(Boolean.Parse(words[1]), Boolean.Parse(words[1]) /*words[2]*/);
-                levels.Add(level);
+                if (line[0] == '#')
+                    continue;
+
+                var attributes = line.Split(':');
+                if (attributes.Length < 4)
+                    continue;
+
+                Level level;
+                LevelData data;
+                if (!TryConstructLevel(attributes, out level, out data))
+                    continue;
+
+                levelData.Add(data.Name, data);
+                levels.Add(data.Name, level);
             }
         }
 
-        void saveLevels()
+        private bool TryConstructLevel(string[] attributes, out Level level, out LevelData data)
         {
-            File.WriteAllText(this.textfile, String.Empty);
-            using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(this.textfile))
+            var lanes = new Lane[5];
+            data = new LevelData();
+
+            for (int i = 0; i < lanes.Length; i++)
             {
-                foreach (var level in this.levels)
+                lanes[i] = new Lane();
+            }
+
+            level = new Level(null, 0);
+            // Name:Unlock_Name:EnemiesPerWave:Nxxxxxx:Nxxxxx
+
+            string name = attributes[0];
+
+            string unlock = attributes[1];
+
+            int enemiesPerWave;
+            if (!int.TryParse(attributes[2], out enemiesPerWave))
+                return false;
+
+            for (int i = 4; i < attributes.Length; i++)
+            {
+                int laneID;
+                if (!int.TryParse(attributes[i][0].ToString(), out laneID))
+                    continue;
+
+                var enemyQueue = attributes[i].Remove(0, 1);
+                List<Enemy> enemies = new List<Enemy>();
+                foreach (var e in enemyQueue)
                 {
-                    string line = level.ToLine();
-                    file.WriteLine(line);
+                    if(e == 'x')
+                    {
+                        enemies.Add(new Enemy());
+                    } else if(e == ' ')
+                    {
+                        enemies.Add(null);
+                    } else
+                    {
+                        continue;
+                    }
                 }
+                lanes[laneID].SetEnemies(enemies);
+            }
+
+
+            data = new LevelData(name, unlock);
+            level = new Level(lanes, enemiesPerWave);
+            return true;
+        }
+
+        public Level GetLevel(string name)
+        {
+            if (levels.ContainsKey(name))
+                return levels[name];
+            return null;
+        }
+
+        public bool IsLevelUnlocked(string name)
+        {
+            if (levelData.ContainsKey(name))
+                return levelData[name].Unlocked;
+            return false;
+        }
+
+        public string GetUnlockName(string name)
+        {
+            if (levelData.ContainsKey(name))
+                return levelData[name].UnlockName;
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the name of the level passed as parameter.
+        /// IMPORTANT: Might return the wrong key. TRY NOT TO USE THIS.
+        /// </summary>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        public string GetLevelName(Level level)
+        {
+            if(levels.ContainsValue(level))
+            {
+                return levels.FirstOrDefault(x => x.Value == level).Key;
+            }
+            return null;
+        }
+
+        class LevelData
+        {
+            public string Name;
+            public string UnlockName;
+            public bool Unlocked;
+
+            public void Unlock()
+            {
+                Unlocked = true;
+            }
+
+            public void Lock()
+            {
+                Unlocked = false;
+            }
+
+            public LevelData()
+            {
+            }
+
+            public LevelData(string name, string unlockName)
+            {
+                Name = name;
+                UnlockName = unlockName;
             }
         }
     }
