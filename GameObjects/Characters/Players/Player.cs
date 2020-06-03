@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SiegeStorm.Abstracts;
 using SiegeStorm.GameObjects.Items;
-using SiegeStorm.GameObjects.Items.Weapon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +15,16 @@ namespace SiegeStorm.GameObjects.Characters.Players
         int gold;
         int health;
         int power;
-        Item armor;
-        Item weapon;
+        Armor armor;
+        Weapon weapon;
         Inventory inventory;
 
         public Player(string name): base(name)
         {
             this.xp = 0;
             this.gold = 50;
-            this.armor = new DefaultArmor();
-            this.weapon = new DefaultWeapon();
+            this.armor = SiegeStorm.ItemManager.GetArmor("defaultArmor");
+            this.weapon = SiegeStorm.ItemManager.GetWeapon("defaultWeapon");
             this.setHealth();
             this.setPower();
 
@@ -63,14 +62,15 @@ namespace SiegeStorm.GameObjects.Characters.Players
         //Equipping item, changing corresponding stats (health / power)
         public void EquipItem(Item item)
         {
+            UnequipItem(item);
             if (item.GetIsArmor())
             {
-                this.armor = item;
+                this.armor = (Armor)item;
                 this.health += item.GetStatValue();
             }
             else
             {
-                this.weapon = item;
+                this.weapon = (Weapon)item;
                 this.power += item.GetStatValue();
             }
         }
@@ -79,13 +79,11 @@ namespace SiegeStorm.GameObjects.Characters.Players
         {
             if (item.GetIsArmor())
             {
-                this.armor = new DefaultArmor();
-                this.health -= item.GetStatValue();
+                this.health -= armor.GetStatValue();
             }
             else
-            {
-                this.weapon = new DefaultWeapon();
-                this.power -= item.GetStatValue();
+            { 
+                this.power -= weapon.GetStatValue();
             }
         }
         //Increasing xp and leveling up

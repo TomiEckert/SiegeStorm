@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Abstracts;
 using SiegeStorm.GameObjects.Characters.Players;
+using SiegeStorm.GameObjects.Items;
 
 namespace SiegeStorm.Screens
 {
@@ -16,6 +17,7 @@ namespace SiegeStorm.Screens
         GameObjects.InventoryAndShop.ButtonBuy buttonBuy;
         GameObjects.InventoryAndShop.ButtonSell buttonSell;
         private Inventory inventory;
+        List<Item> ShopList = new List<Item>(); 
 
         internal override void LoadContent()
         {
@@ -36,6 +38,14 @@ namespace SiegeStorm.Screens
         {
             //TODO : Multiplayer
             SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().setInventory(inventory);
+        }
+
+        
+        void InitializeShop()
+        {
+            // TODO generate shop from items!
+            //ShopList.Add();
+
         }
     }
 }

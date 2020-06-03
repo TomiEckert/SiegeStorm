@@ -6,16 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiegeStorm.GameObjects.Items.Weapon
+namespace SiegeStorm.GameObjects.Items
 {
-    class DefaultWeapon : Item
+    public class Armor : Item
     {
-        public DefaultWeapon() : base("Rusty Iron Sword", "Some rusty sword.", 1, 1, false)
+        
+        public Armor(string name, string description, int statValue, int price, bool isArmor): base(name, description, statValue, price, isArmor)
         {
             //get and set texture
-            SetTexture(SiegeStorm.TextureManager.GetTexture());
+            SetTexture(SiegeStorm.TextureManager.GetTexture()); 
             //set position
-            var x = SiegeStorm.ScreenWidth / 6 - Texture.Width;
+            var x = SiegeStorm.ScreenWidth / 6 - Texture.Width; 
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;
             SetPosition(new Vector2(x, y));
         }

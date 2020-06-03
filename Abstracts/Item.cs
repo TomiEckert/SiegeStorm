@@ -12,14 +12,14 @@ namespace SiegeStorm.Abstracts
         string name;
         string description;
         int statValue;
-        int weight;
+        int price;
         bool isArmor;
 
-        public Item(string name, string description, int statValue, int weight, bool isArmor) {
+        public Item(string name, string description, int statValue, int price, bool isArmor) {
             this.name = name;
             this.description = description;
             this.statValue = statValue;
-            this.weight = weight;
+            this.price = price;
             this.isArmor = isArmor;
         }
 
@@ -36,9 +36,9 @@ namespace SiegeStorm.Abstracts
         {
             return this.statValue;
         }
-        public int GetWeight()
+        public int GetPrice()
         {
-            return weight;
+            return price;
         }
         public int GetStatValue()
         {
