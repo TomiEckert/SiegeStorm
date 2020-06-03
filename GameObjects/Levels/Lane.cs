@@ -1,4 +1,5 @@
-﻿using SiegeStorm.GameObjects.Characters.Enemies;
+﻿using Microsoft.Xna.Framework;
+using SiegeStorm.GameObjects.Characters.Enemies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Levels
 {
-    class Lane
+    class Lane : GameObject
     {
         int position;
         int maxAmountEnemies;
@@ -23,5 +24,11 @@ namespace SiegeStorm.GameObjects.Levels
         {
             return position;
         }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
+
     }
 }
