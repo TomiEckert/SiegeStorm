@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Levels
 {
-    class Level1 : GameLevel
+    class Level : GameLevel
     {
+
         public override void Run()
         {
             throw new NotImplementedException();

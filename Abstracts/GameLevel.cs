@@ -8,20 +8,24 @@ namespace SiegeStorm
 {
     public abstract class GameLevel: GameScreen
     {
-        public bool IsCompleted;
+        internal bool IsCompleted;
+        internal bool IsLocked;
+
         public GameLevel()
         {
             this.IsCompleted = false;
+            this.IsLocked = true;
         }
-        public GameLevel(bool isCompleted)
+        public GameLevel(bool isCompleted, bool isLocked)
         {
             this.IsCompleted = isCompleted;
+            this.IsLocked = isLocked;
         }
 
         public void Complete()
         {
             this.IsCompleted = true;
-            SiegeStorm.LevelManager.UnlockNext(this);
+            //SiegeStorm.LevelManager.UnlockNext(this);
         }
 
         public abstract void Run();
