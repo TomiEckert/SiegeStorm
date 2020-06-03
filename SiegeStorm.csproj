@@ -51,6 +51,7 @@
     <Compile Include="FrameCounter.cs" />
     <Compile Include="GameCursor.cs" />
     <Compile Include="GameObjects\Characters\Enemies\Enemy.cs" />
+    <Compile Include="GameObjects\Characters\Players\Inventory.cs" />
     <Compile Include="GameObjects\Characters\Players\Player.cs" />
     <Compile Include="GameObjects\InventoryAndShop\ButtonSell.cs" />
     <Compile Include="GameObjects\InventoryAndShop\ButtonBuy.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="GameObjects\Map\Level1Node.cs" />
     <Compile Include="GameObjects\MainMenu\Background.cs" />
     <Compile Include="GameObjects\SettingsMenu\ButtonReturn.cs" />
+    <Compile Include="Managers\PlayerManager.cs" />
     <Compile Include="Managers\LevelManager.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />

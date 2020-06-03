@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Abstracts;
+using SiegeStorm.GameObjects.Characters.Players;
 
 namespace SiegeStorm.Screens
 {
@@ -14,11 +15,19 @@ namespace SiegeStorm.Screens
         GameObjects.SettingsMenu.ButtonReturn returnButton;
         GameObjects.InventoryAndShop.ButtonBuy buttonBuy;
         GameObjects.InventoryAndShop.ButtonSell buttonSell;
+        private Inventory inventory;
 
         internal override void LoadContent()
         {
-            returnButton = new GameObjects.SettingsMenu.ButtonReturn();
-            AddObject(returnButton);
+            buttonSell = new GameObjects.InventoryAndShop.ButtonSell();
+            AddObject(buttonSell);
+            buttonBuy = new GameObjects.InventoryAndShop.ButtonBuy();
+            AddObject(buttonBuy);
+        }
+
+        public override void ScreenOpen()
+        {
+            inventory = SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().getInventory();
         }
     }
 }

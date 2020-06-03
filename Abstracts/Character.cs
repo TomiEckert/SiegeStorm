@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm.Abstracts
 {
-    abstract class Character: GameObject
+    public abstract class Character: GameObject
     {
         string name;
         int level;

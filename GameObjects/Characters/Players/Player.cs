@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Characters.Players
 {
-    class Player: Character
+    public class Player: Character
     {
         int xp;
         int gold;
@@ -18,8 +18,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         int power;
         Item armor;
         Item weapon;
-        List<Item> inventoryItems = new List<Item>();
-        int maxCapacity = 20;
+        Inventory inventory;
 
         public Player(string name): base(name)
         {
@@ -49,6 +48,11 @@ namespace SiegeStorm.GameObjects.Characters.Players
         void setPower()
         {
             this.power = this.GetBasePower() + this.weapon.GetStatValue();
+        }
+
+        public Inventory getInventory()
+        {
+            return inventory;
         }
         
         //Equipping item, changing corresponding stats (health / power)
@@ -101,24 +105,6 @@ namespace SiegeStorm.GameObjects.Characters.Players
         public void RemoveGold(int amount)
         {
             this.gold -= amount;
-        }
-
-        public void AddItemToInventory(Item item)
-        {
-            if (inventoryItems.Count <= maxCapacity)
-            {
-                inventoryItems.Add(item);
-            }
-            else
-            {
-                //TODO make this not print in the console but in the game
-                Console.WriteLine("Inventory is full.");
-            }
-        }
-
-        public void RemoveItemFromInventory(Item item)
-        {
-            inventoryItems.Remove(item);
         }
     }
 }
