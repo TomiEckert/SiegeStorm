@@ -19,6 +19,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         Item armor;
         Item weapon;
         Inventory inventory;
+        int currentLane;
 
         public Player(string name): base(name)
         {
@@ -35,6 +36,21 @@ namespace SiegeStorm.GameObjects.Characters.Players
             var x = SiegeStorm.ScreenWidth / 6 - Texture.Width;
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;
             SetPosition(new Vector2(x, y));
+        }
+
+        internal void setPositionY(int position)
+        {
+            SetPosition(new Vector2(Position.X, position));
+        }
+
+        internal void setLane(int lane)
+        {
+            currentLane = lane;
+        }
+
+        internal int getLane()
+        {
+            return currentLane;
         }
 
         //TODO movement

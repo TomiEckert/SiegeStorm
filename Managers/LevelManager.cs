@@ -21,7 +21,7 @@ namespace SiegeStorm.Managers
             Next = new Dictionary<GameLevel, string>();
 
             //Adding levels, locked state and next level to corresponding dictionaries
-            Levels.Add("level1", new Level1());
+            Levels.Add("level1", new Level());
             IsLocked.Add("level1", false);
         }
 
