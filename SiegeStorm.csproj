@@ -55,8 +55,8 @@
     <Compile Include="GameObjects\Characters\Players\Player.cs" />
     <Compile Include="GameObjects\InventoryAndShop\ButtonSell.cs" />
     <Compile Include="GameObjects\InventoryAndShop\ButtonBuy.cs" />
-    <Compile Include="GameObjects\Items\Armor\DefaultArmor.cs" />
-    <Compile Include="GameObjects\Items\Weapon\DefaultWeapon.cs" />
+    <Compile Include="GameObjects\Items\Armor\Armor.cs" />
+    <Compile Include="GameObjects\Items\Weapon\Weapon.cs" />
     <Compile Include="GameObjects\Levels\Lane.cs" />
     <Compile Include="GameObjects\SettingsMenu\ButtonFullscreen.cs" />
     <Compile Include="GameObjects\MainMenu\ButtonLoad.cs" />
