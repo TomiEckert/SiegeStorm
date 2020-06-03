@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SiegeStorm.GameObjects.Characters.Players
 {
     
-    class Inventory
+    public class Inventory
     {
         List<Item> inventoryItems = new List<Item>();
         int maxCapacity = 20;

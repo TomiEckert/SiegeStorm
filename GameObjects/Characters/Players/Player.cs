@@ -55,6 +55,11 @@ namespace SiegeStorm.GameObjects.Characters.Players
             return inventory;
         }
         
+        public void setInventory(Inventory newInventory)
+        {
+            inventory = newInventory;
+        }
+
         //Equipping item, changing corresponding stats (health / power)
         public void EquipItem(Item item)
         {

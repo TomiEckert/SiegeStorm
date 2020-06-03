@@ -25,9 +25,17 @@ namespace SiegeStorm.Screens
             AddObject(buttonBuy);
         }
 
+        
         public override void ScreenOpen()
         {
+            // TODO: Multiplayer
             inventory = SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().getInventory();
+        }
+
+        public override void ScreenClose()
+        {
+            //TODO : Multiplayer
+            SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().setInventory(inventory);
         }
     }
 }
