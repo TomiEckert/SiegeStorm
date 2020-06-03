@@ -1,5 +1,4 @@
 ﻿using SiegeStorm.GameObjects.Items;
-using SiegeStorm.GameObjects.Items.Weapon;
 using System;
 using System.Collections.Generic;
 using System.Linq;

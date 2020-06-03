@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Items
 {
-    class DefaultArmor : Item
+    public class Weapon : Item
     {
-        public DefaultArmor(): base("Cotton Outfit", "Normal clothes, not giving any protection or power.", 0, 0, true)
+
+        public Weapon(string name, string description, int statValue, int price, bool isArmor) : base(name, description, statValue, price, isArmor)
         {
             //get and set texture
-            SetTexture(SiegeStorm.TextureManager.GetTexture()); 
+            SetTexture(SiegeStorm.TextureManager.GetTexture());
             //set position
-            var x = SiegeStorm.ScreenWidth / 6 - Texture.Width; 
+            var x = SiegeStorm.ScreenWidth / 6 - Texture.Width;
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;
             SetPosition(new Vector2(x, y));
         }

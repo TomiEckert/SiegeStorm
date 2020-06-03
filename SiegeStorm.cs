@@ -18,6 +18,7 @@ namespace SiegeStorm
         public static readonly ScreenManager ScreenManager = new ScreenManager();
         public static readonly LevelManager LevelManager = new LevelManager();
         public static readonly PlayerManager PlayerManager = new PlayerManager();
+        public static readonly ItemManager ItemManager = new ItemManager();
 
         public static GraphicsDeviceManager Graphics;
         public static SpriteBatch SpriteBatch;
@@ -68,6 +69,7 @@ namespace SiegeStorm
             ScreenManager.LoadContent();
             LevelManager.LoadContent();
             PlayerManager.LoadContent();
+            ItemManager.LoadContent();
             cursor = new GameCursor();
         }
 

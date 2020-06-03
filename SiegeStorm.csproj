@@ -57,6 +57,7 @@
     <Compile Include="GameObjects\InventoryAndShop\ButtonBuy.cs" />
     <Compile Include="GameObjects\Items\Armor\DefaultArmor.cs" />
     <Compile Include="GameObjects\Items\Weapon\DefaultWeapon.cs" />
+    <Compile Include="GameObjects\Levels\Lane.cs" />
     <Compile Include="GameObjects\SettingsMenu\ButtonFullscreen.cs" />
     <Compile Include="GameObjects\MainMenu\ButtonLoad.cs" />
     <Compile Include="GameObjects\Levels\Level.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="GameObjects\Map\Level1Node.cs" />
     <Compile Include="GameObjects\MainMenu\Background.cs" />
     <Compile Include="GameObjects\SettingsMenu\ButtonReturn.cs" />
+    <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
     <Compile Include="Managers\LevelManager.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
@@ -98,7 +100,8 @@
     <Content Include="Content\Strings.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Levels.txt" />
+    <Content Include="Content\Armor.txt" />
+    <Content Include="Content\Weapons.txt" />
     <Content Include="Content\Textures\bg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
