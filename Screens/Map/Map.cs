@@ -1,21 +1,39 @@
-﻿using System;
+﻿using SiegeStorm.GameScreens.Levels;
+using SiegeStorm.GameObjects.Map;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SiegeStorm.Managers;
 
 namespace SiegeStorm.Screens
 {
     class Map : GameScreen
     {
-        //TODO create more level nodes, levels, etc. and add them
-        GameObjects.Map.Level1Node level1;
+        List<Level> levels; 
         GameObjects.SettingsMenu.ButtonReturn buttonReturn;
 
-        internal override void LoadContent()
+        public Map()
         {
-            level1 = new GameObjects.Map.Level1Node();
-            AddObject(level1);
+            this.levels = SiegeStorm.LevelManager.GetLevels();
+        }
+
+        internal override void LoadContent()
+        {   
+            int posX = 0;
+            int posY = 0;
+            foreach (var level in levels)
+            {
+                AddObject(new MapNode(level, posX, posY));
+                posX += 3;
+                if(posX >= 9)
+                {
+                    posX = 0;
+                    posY++;
+                }
+            }
+            
             buttonReturn = new GameObjects.SettingsMenu.ButtonReturn();
             AddObject(buttonReturn);
         }

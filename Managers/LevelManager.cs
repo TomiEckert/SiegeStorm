@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SiegeStorm.GameObjects.Characters.Enemies;
-using SiegeStorm.GameObjects.Levels;
+using SiegeStorm.GameScreens.Levels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +18,11 @@ namespace SiegeStorm.Managers
 
         const string FILE = "Content/Levels.txt";
 
+        public LevelManager()
+        {
+            this.levels = new Dictionary<string, Level>();
+            this.levelData = new Dictionary<string, LevelData>();
+        }
         public void LoadContent()
         {
             levels = new Dictionary<string, Level>();
@@ -96,6 +101,16 @@ namespace SiegeStorm.Managers
             data = new LevelData(name, unlock);
             level = new Level(lanes, enemiesPerWave);
             return true;
+        }
+
+        public List<Level> GetLevels()
+        {
+            List<Level> levels = new List<Level>();
+            foreach (KeyValuePair<string, Level> level in this.levels)
+            {
+                levels?.Add(level.Value);
+            }
+            return levels;
         }
 
         public Level GetLevel(string name)
