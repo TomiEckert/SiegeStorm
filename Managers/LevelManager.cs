@@ -57,7 +57,7 @@ namespace SiegeStorm.Managers
                 lanes[i] = new Lane();
             }
 
-            level = new Level(null, 0);
+            level = null;
             // Name:Unlock_Name:EnemiesPerWave:Nxxxxxx:Nxxxxx
 
             string name = attributes[0];
