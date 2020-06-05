@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using SiegeStorm.GameObjects.Levels;
 
 namespace SiegeStorm.Managers
 {
@@ -59,12 +60,25 @@ namespace SiegeStorm.Managers
 
         public void ChangeScreenTo(string screen)
         {
-            if(gameScreens.ContainsKey(screen)) {
+            if (gameScreens.ContainsKey(screen))
+            {
                 if (currentScreen != null)
                     currentScreen.ScreenClose();
                 currentScreen = gameScreens[screen];
                 currentScreen.ScreenOpen();
             }
+        }
+
+        public void ChangeScreenTo(Level level)
+        {
+            if (!gameScreens.ContainsValue(level))
+            {
+                if (currentScreen != null)
+                    currentScreen.ScreenClose();
+                gameScreens.Add(SiegeStorm.LevelManager.GetLevelName(level), level);
+            }
+            currentScreen = level;
+            currentScreen.ScreenOpen();
         }
 
         /// <summary>

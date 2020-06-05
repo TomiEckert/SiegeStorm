@@ -38,11 +38,6 @@ namespace SiegeStorm.GameObjects.Levels
         {
             var player = SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault();
             player.SetVerticalPosition(lanes[player.GetLane()].GetPosition());
-            if(delay < INITIAL_DELAY)
-            {
-                delay += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-                return;
-            }
             base.Update(gameTime);
         }
 
@@ -55,6 +50,11 @@ namespace SiegeStorm.GameObjects.Levels
         public override void ScreenClose()
         {
             RemoveObject(SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault());
+        }
+
+        public void Run()
+        {
+            SiegeStorm.ScreenManager.ChangeScreenTo(this);
         }
     }
 }

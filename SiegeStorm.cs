@@ -37,7 +37,6 @@ namespace SiegeStorm
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             ContentManager = Content;
-            frameCounter = new FrameCounter();
         }
 
         /// <summary>
@@ -65,12 +64,13 @@ namespace SiegeStorm
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             SoundManager.LoadContent();
             TextureManager.LoadContent();
-            StringManager.LoadContent();
-            ScreenManager.LoadContent();
-            LevelManager.LoadContent();
             ItemManager.LoadContent();
             PlayerManager.LoadContent();
+            StringManager.LoadContent();
+            LevelManager.LoadContent();
+            ScreenManager.LoadContent();
             cursor = new GameCursor();
+            frameCounter = new FrameCounter();
         }
 
         /// <summary>

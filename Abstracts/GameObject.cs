@@ -11,7 +11,7 @@ namespace SiegeStorm
     public abstract class GameObject
     {
         Vector2 position;
-        Texture2D texture;
+        Texture2D texture = SiegeStorm.TextureManager.GetTexture();
 
         protected Vector2 Position { get => position; }
         protected Texture2D Texture { get => texture; }

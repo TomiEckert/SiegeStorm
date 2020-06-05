@@ -10,7 +10,6 @@ namespace SiegeStorm.GameObjects.Levels
 {
     public class Lane : GameObject
     {
-        private int position;
         private List<Enemy> enemies;
 
         public void SetEnemies(List<Enemy> enemies)
@@ -20,12 +19,12 @@ namespace SiegeStorm.GameObjects.Levels
 
         public void SetPosition(int position)
         {
-            this.position = position;
+            SetPosition(new Vector2(0, position));
         }
 
         public int GetPosition()
         {
-            return position;
+            return (int) Position.Y;
         }
 
         public override void Update(GameTime gameTime)

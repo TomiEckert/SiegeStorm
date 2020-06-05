@@ -95,6 +95,7 @@ namespace SiegeStorm.Managers
 
             data = new LevelData(name, unlock);
             level = new Level(lanes, enemiesPerWave);
+            level.LoadContent();
             return true;
         }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Abstracts;
 using SiegeStorm.GameObjects.Items;
 using System;
@@ -124,6 +125,49 @@ namespace SiegeStorm.GameObjects.Characters.Players
         public void RemoveGold(int amount)
         {
             this.gold -= amount;
+        }
+
+        bool wDown;
+        bool sDown;
+        public override void Update(GameTime gameTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.D) && Position.X < (SiegeStorm.ScreenWidth - Texture.Width))
+            {
+                SetPosition(new Vector2(Position.X + 5, Position.Y));
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A) && Position.X > 0)
+            {
+                SetPosition(new Vector2(Position.X - 5, Position.Y));
+            }
+
+            if(Keyboard.GetState().IsKeyDown(Keys.W) && !wDown)
+            {
+                wDown = true;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.S) && !sDown)
+            {
+                sDown = true;
+            }
+
+            if (Keyboard.GetState().IsKeyUp(Keys.S) && currentLane < 4 && sDown)
+            {
+                SetLane(currentLane + 1);
+                sDown = false;
+            }
+
+            if (Keyboard.GetState().IsKeyUp(Keys.W) && currentLane > 0 && wDown)
+            {
+                SetLane(currentLane - 1);
+                wDown = false;
+            }
+
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            base.Draw(gameTime);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace SiegeStorm.Managers
         public void LoadContent()
         {
             var p = new Player("one");
+            players.Add("one", p);
         }
 
         public Player[] GetPlayers()

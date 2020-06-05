@@ -19,6 +19,7 @@ namespace SiegeStorm.GameObjects.Map
             var x = SiegeStorm.ScreenWidth/6 - Texture.Width;
             var y = SiegeStorm.ScreenHeight/3 - Texture.Height;
             SetPosition(new Vector2(x, y));
+            level = SiegeStorm.LevelManager.GetLevel("First battle");
         }
     }
 }

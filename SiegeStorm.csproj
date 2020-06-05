@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Abstracts\Character.cs" />
     <Compile Include="Abstracts\GameButton.cs" />
-    <Compile Include="Abstracts\GameLevel.cs" />
     <Compile Include="Abstracts\GameObject.cs" />
     <Compile Include="Abstracts\GameScreen.cs" />
     <Compile Include="Abstracts\Item.cs" />

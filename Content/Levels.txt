@@ -2,4 +2,4 @@
 # LANES: first character is the number of lane
 # rest is enemy ('x') or nothing (' ')
 # we can control the flow of enemies with this
-0:First battle:1:4:1x   xx      xxxxxxxx:3x   xx  xxxx    xxxx
+First battle:none:4:1x   xx      xxxxxxxx:3x   xx  xxxx    xxxx

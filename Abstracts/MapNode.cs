@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SiegeStorm.GameObjects.Levels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace SiegeStorm
 {
     abstract class MapNode : GameButton
     {
-        protected GameLevel level;
+        protected Level level;
         protected bool isLocked;
 
         public MapNode(string name)
