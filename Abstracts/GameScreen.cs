@@ -61,11 +61,24 @@ namespace SiegeStorm
             }
         }
 
+        public void OnSO()
+        {
+            LoadContent();
+            ScreenOpen();
+        }
         public virtual void ScreenOpen()
         {
-
         }
 
+        public void OnSC()
+        {
+            ScreenClose();
+            foreach (var child in gameObjects)
+            {
+                child.Dispose();
+            }
+            gameObjects = new List<GameObject>();
+        }
         public virtual void ScreenClose()
         {
 

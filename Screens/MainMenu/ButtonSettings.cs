@@ -7,7 +7,7 @@ namespace SiegeStorm.GameObjects.MainMenu
     {
         public ButtonSettings()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture("settingsButton"));
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "settingsButton"));
             var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
             var y = SiegeStorm.ScreenHeight / 10 * 7 - Texture.Height;
             SetPosition(new Vector2(x, y));

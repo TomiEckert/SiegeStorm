@@ -7,7 +7,7 @@ namespace SiegeStorm.GameObjects.MainMenu
     {
         public ButtonExit()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture("exitButton"));
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "exitButton"));
             var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
             var y = SiegeStorm.ScreenHeight / 10 * 9 - Texture.Height;
             SetPosition(new Vector2(x, y));

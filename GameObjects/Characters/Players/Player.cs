@@ -31,7 +31,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
             this.SetPower();
 
             //TODO set texture
-            SetTexture(SiegeStorm.TextureManager.GetTexture());
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this));
             //TODO set position
             var x = SiegeStorm.ScreenWidth / 6 - Texture.Width;
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;

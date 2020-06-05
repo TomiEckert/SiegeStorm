@@ -13,7 +13,7 @@ namespace SiegeStorm
 
         public GameCursor()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture("cursor"));
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "cursor"));
         }
 
         public override void Update(GameTime gameTime)

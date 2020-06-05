@@ -13,7 +13,7 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         public Enemy(): base("Enemy Lvl 1")
         {
             //TODO set texture
-            SetTexture(SiegeStorm.TextureManager.GetTexture());
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this));
             //TODO set position
             var x = SiegeStorm.ScreenWidth / 6 - Texture.Width;
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;

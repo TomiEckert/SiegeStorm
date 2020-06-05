@@ -11,7 +11,12 @@ namespace SiegeStorm
     public abstract class GameObject
     {
         Vector2 position;
-        Texture2D texture = SiegeStorm.TextureManager.GetTexture();
+        Texture2D texture;
+
+        public GameObject()
+        {
+            texture = SiegeStorm.TextureManager.GetTexture(this);
+        }
 
         protected Vector2 Position { get => position; }
         protected Texture2D Texture { get => texture; }
@@ -33,6 +38,11 @@ namespace SiegeStorm
         public virtual void Draw(GameTime gameTime)
         {
             SiegeStorm.SpriteBatch.Draw(texture, position, Color.White);
+        }
+
+        public void Dispose()
+        {
+            SiegeStorm.TextureManager.Dispose(this);
         }
     }
 }

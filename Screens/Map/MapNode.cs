@@ -17,7 +17,7 @@ namespace SiegeStorm.GameObjects.Map
         {
             this.level = level;
             //TODO set texture
-            SetTexture(SiegeStorm.TextureManager.GetTexture());
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this));
             //Set position
             var x = (int)(SiegeStorm.ScreenWidth*.1 - Texture.Width);
             var y = (int)(SiegeStorm.ScreenHeight*.1 - Texture.Height);

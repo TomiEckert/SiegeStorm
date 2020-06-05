@@ -63,9 +63,9 @@ namespace SiegeStorm.Managers
             if (gameScreens.ContainsKey(screen))
             {
                 if (currentScreen != null)
-                    currentScreen.ScreenClose();
+                    currentScreen.OnSC();
                 currentScreen = gameScreens[screen];
-                currentScreen.ScreenOpen();
+                currentScreen.OnSO();
             }
         }
 
@@ -74,11 +74,11 @@ namespace SiegeStorm.Managers
             if (!gameScreens.ContainsValue(level))
             {
                 if (currentScreen != null)
-                    currentScreen.ScreenClose();
+                    currentScreen.OnSC();
                 gameScreens.Add(SiegeStorm.LevelManager.GetLevelName(level), level);
             }
             currentScreen = level;
-            currentScreen.ScreenOpen();
+            currentScreen.OnSO();
         }
 
         /// <summary>

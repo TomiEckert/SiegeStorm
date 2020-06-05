@@ -11,7 +11,7 @@ namespace SiegeStorm.GameObjects.MainMenu
     {
        public Background()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture("bg"));
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "bg"));
             SetPosition(new Vector2(0, 0));
         }
 
