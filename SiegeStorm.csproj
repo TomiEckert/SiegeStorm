@@ -49,7 +49,6 @@
     <Compile Include="Abstracts\GameObject.cs" />
     <Compile Include="Abstracts\GameScreen.cs" />
     <Compile Include="Abstracts\Item.cs" />
-    <Compile Include="Abstracts\MapNode.cs" />
     <Compile Include="DebugConsole.cs" />
     <Compile Include="Debug\DebugCommand.cs" />
     <Compile Include="FrameCounter.cs" />
@@ -69,7 +68,7 @@
     <Compile Include="Screens\MainMenu\ButtonStart.cs" />
     <Compile Include="Screens\MainMenu\ButtonSettings.cs" />
     <Compile Include="Screens\SettingsMenu\ButtonFPS.cs" />
-    <Compile Include="Screens\Map\Level1Node.cs" />
+    <Compile Include="Screens\Map\MapNode.cs" />
     <Compile Include="Screens\MainMenu\Background.cs" />
     <Compile Include="Screens\SettingsMenu\ButtonReturn.cs" />
     <Compile Include="Managers\ItemManager.cs" />

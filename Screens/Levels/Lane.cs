@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiegeStorm.GameObjects.Levels
+namespace SiegeStorm.GameScreens.Levels
 {
     public class Lane : GameObject
     {
