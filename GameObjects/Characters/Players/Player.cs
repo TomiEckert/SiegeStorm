@@ -155,11 +155,17 @@ namespace SiegeStorm.GameObjects.Characters.Players
             {
                 SetLane(currentLane + 1);
                 sDown = false;
+            } else if (Keyboard.GetState().IsKeyUp(Keys.S) && currentLane == 4 && sDown)
+            {
+                sDown = false;
             }
 
             if (Keyboard.GetState().IsKeyUp(Keys.W) && currentLane > 0 && wDown)
             {
                 SetLane(currentLane - 1);
+                wDown = false;
+            } else if (Keyboard.GetState().IsKeyUp(Keys.W) && currentLane == 0 && wDown)
+            {
                 wDown = false;
             }
 
