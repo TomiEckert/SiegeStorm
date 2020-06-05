@@ -21,15 +21,15 @@ namespace SiegeStorm.Screens
 
         internal override void LoadContent()
         {   
-            int posX = 0;
-            int posY = 0;
+            int posX = 1;
+            int posY = 1;
             foreach (var level in levels)
             {
                 AddObject(new MapNode(level, posX, posY));
                 posX += 3;
                 if(posX >= 9)
                 {
-                    posX = 0;
+                    posX = 1;
                     posY++;
                 }
             }

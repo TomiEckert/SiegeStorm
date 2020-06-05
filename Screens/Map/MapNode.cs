@@ -19,8 +19,8 @@ namespace SiegeStorm.GameObjects.Map
             //TODO set texture
             SetTexture(SiegeStorm.TextureManager.GetTexture());
             //Set position
-            var x = SiegeStorm.ScreenWidth/posX - Texture.Width;
-            var y = SiegeStorm.ScreenHeight/posY - Texture.Height;
+            var x = (int)(SiegeStorm.ScreenWidth*.1 - Texture.Width);
+            var y = (int)(SiegeStorm.ScreenHeight*.1 - Texture.Height);
             SetPosition(new Vector2(x, y));
             level = SiegeStorm.LevelManager.GetLevel("First battle");
         }
@@ -29,7 +29,7 @@ namespace SiegeStorm.GameObjects.Map
         {
             var levelName = SiegeStorm.LevelManager.GetLevelName(this.level);
             if (SiegeStorm.LevelManager.IsLevelUnlocked(levelName)){
-                this.level.ScreenOpen();
+                level.Run();
             }
         }
     }

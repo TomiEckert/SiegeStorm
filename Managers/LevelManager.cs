@@ -101,6 +101,8 @@ namespace SiegeStorm.Managers
             data = new LevelData(name, unlock);
             level = new Level(lanes, enemiesPerWave);
             level.LoadContent();
+            if (data.Name == "First battle")
+                data.Unlock();
             return true;
         }
 
