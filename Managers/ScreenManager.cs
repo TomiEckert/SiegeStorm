@@ -67,6 +67,7 @@ namespace SiegeStorm.Managers
                 currentScreen = gameScreens[screen];
                 currentScreen.OnSO();
             }
+            GC.Collect();
         }
 
         public void ChangeScreenTo(Level level)
@@ -79,6 +80,7 @@ namespace SiegeStorm.Managers
             }
             currentScreen = level;
             currentScreen.OnSO();
+            GC.Collect();
         }
 
         /// <summary>
