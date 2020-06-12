@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Abstracts;
-using SiegeStorm.Content;
 using SiegeStorm.GameObjects.Items;
 
 namespace SiegeStorm.GameObjects.Characters.Players
@@ -17,6 +15,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private Weapon weapon;
         private Inventory inventory;
         private int currentLane;
+        private Animation walk;
 
         public Player(string name) : base(name)
         {
@@ -31,9 +30,8 @@ namespace SiegeStorm.GameObjects.Characters.Players
             var x = SiegeStorm.ScreenWidth / 6 - Texture.Width;
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;
             Vector2 position = new Vector2(x, y);
-            //Animation
-            SiegeStorm.AnimationManager.AddAnimation("runRight", new Animation(SiegeStorm.ContentManager.Load<Texture2D>("runRight"), 8), position);
-            SiegeStorm.AnimationManager.AddAnimation("runLeft", new Animation(SiegeStorm.ContentManager.Load<Texture2D>("runLeft"), 8), position);
+
+            walk = SiegeStorm.AnimationManager.GetAnimation("walk");
         }
 
         public void SetVerticalPosition(int position)
@@ -174,7 +172,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
 
         public override void Draw(GameTime gameTime)
         {
-            SiegeStorm.AnimationManager.Draw(SiegeStorm.SpriteBatch);
+            walk.Draw(gameTime, Position);
         }
     }
 }

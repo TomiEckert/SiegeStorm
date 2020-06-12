@@ -1,59 +1,42 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SiegeStorm.Content;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace SiegeStorm.Managers
 {
     public class AnimationManager
     {
-        public Dictionary<string, Animation> animations;
-        private List<Sprite> sprites;
+        private const string PATH = "Content/Animation/Textures/";
+
+        private Dictionary<string, FileInfo[]> animations;
 
         public AnimationManager()
         {
-            this.animations = new Dictionary<string, Animation>();
-            this.sprites = new List<Sprite>();
+            animations = new Dictionary<string, FileInfo[]>();
+            LoadContent();
         }
 
-        public void AddAnimation(string name, Animation animation, Vector2 position)
+        public void LoadContent()
         {
-            this.animations.Add(name, animation);
-            this.sprites = new List<Sprite>();
-            this.sprites.Add(
-                new Sprite()
-                {
-                    Position = position
-                }
-            );
-        }
+            var dir = new DirectoryInfo(PATH);
+            var files = dir.GetFiles("anim_*_00.png");
 
-        public void RemoveAnimation(string name)
-        {
-            this.animations.Remove(name);
-            this.sprites = new List<Sprite>();
-            this.sprites.Add(new Sprite());
+            foreach (var file in files)
+            {
+                var name = file.Name.Split('_')[1];
+                var local = dir.GetFiles("anim_" + file.Name.Split('_')[1] + "*");
+
+                if (animations.ContainsKey(name))
+                    continue;
+
+                animations.Add(name, local);
+            }
         }
 
         public Animation GetAnimation(string name)
         {
-            return animations[name];
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            foreach (var sprite in this.sprites)
-            {
-                sprite.Update(gameTime);
-            }
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (var sprite in this.sprites)
-            {
-                sprite.Draw(spriteBatch);
-            }
+            if (!animations.ContainsKey(name))
+                throw new System.Exception("Animation is not loaded.");
+            return new Animation(animations[name]);
         }
     }
 }

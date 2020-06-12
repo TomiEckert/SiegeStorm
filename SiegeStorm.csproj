@@ -49,8 +49,7 @@
     <Compile Include="Abstracts\GameObject.cs" />
     <Compile Include="Abstracts\GameScreen.cs" />
     <Compile Include="Abstracts\Item.cs" />
-    <Compile Include="Content\Animation\Animation.cs" />
-    <Compile Include="Content\Animation\Sprite.cs" />
+    <Compile Include="GameObjects\Animation.cs" />
     <Compile Include="DebugConsole.cs" />
     <Compile Include="Debug\DebugCommand.cs" />
     <Compile Include="FrameCounter.cs" />
@@ -58,7 +57,6 @@
     <Compile Include="GameObjects\Characters\Enemies\Enemy.cs" />
     <Compile Include="GameObjects\Characters\Players\Inventory.cs" />
     <Compile Include="GameObjects\Characters\Players\Player.cs" />
-    <Compile Include="Content\Animation\AnimationPlayer.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonSell.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonBuy.cs" />
@@ -98,6 +96,78 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Animation\Textures\anim_walk_00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_22.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_walk_23.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Levels.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

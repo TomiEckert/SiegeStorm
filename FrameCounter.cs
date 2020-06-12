@@ -6,18 +6,18 @@ namespace SiegeStorm
 {
     public class FrameCounter : GameObject
     {
+        public const int MAXIMUM_SAMPLES = 50;
+
+        private Queue<float> _sampleBuffer = new Queue<float>();
+
         public FrameCounter()
         {
         }
 
-        public long TotalFrames { get; private set; }
-        public float TotalSeconds { get; private set; }
         public float AverageFramesPerSecond { get; private set; }
         public float CurrentFramesPerSecond { get; private set; }
-
-        public const int MAXIMUM_SAMPLES = 50;
-
-        private Queue<float> _sampleBuffer = new Queue<float>();
+        public long TotalFrames { get; private set; }
+        public float TotalSeconds { get; private set; }
 
         public override void Update(GameTime gameTime)
         {

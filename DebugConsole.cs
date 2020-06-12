@@ -27,6 +27,25 @@ namespace SiegeStorm
             }
         }
 
+        [DebugCommand("Clears the debug console", "clear")]
+        private void Clear(string[] args)
+        {
+            Console.Clear();
+        }
+
+        [DebugCommand("Echos out the argument passed.", "echo test message")]
+        private void Echo(string[] args)
+        {
+            string output = string.Join(" ", args);
+            Console.WriteLine(output);
+        }
+
+        [DebugCommand("Stops the game.", "exit")]
+        private void Exit(string[] args)
+        {
+            SiegeStorm.Instance.Exit();
+        }
+
         private void GetCommands()
         {
             MethodInfo[] methodInfos = GetType()
@@ -41,19 +60,6 @@ namespace SiegeStorm
                     Console.WriteLine("- Name: " + method.Name);
                 }
             }
-        }
-
-        private void RunCommand(string command, string[] args)
-        {
-            if (commands.ContainsKey(command.ToLower()))
-                commands[command.ToLower()].Invoke(this, new object[] { args });
-        }
-
-        [DebugCommand("Echos out the argument passed.", "echo test message")]
-        private void Echo(string[] args)
-        {
-            string output = string.Join(" ", args);
-            Console.WriteLine(output);
         }
 
         [DebugCommand("Prints out this message, prints out specific help for the command passed as an argument.", "help echo")]
@@ -83,10 +89,10 @@ namespace SiegeStorm
             }
         }
 
-        [DebugCommand("Stops the game.", "exit")]
-        private void Exit(string[] args)
+        private void RunCommand(string command, string[] args)
         {
-            SiegeStorm.Instance.Exit();
+            if (commands.ContainsKey(command.ToLower()))
+                commands[command.ToLower()].Invoke(this, new object[] { args });
         }
 
         [DebugCommand("Prints out the current game screen, or switches to the specified screen if it is passed as an argument and exists.", "screen MainMenu")]
@@ -101,12 +107,6 @@ namespace SiegeStorm
                 }
             }
             Console.WriteLine("Current screen: " + SiegeStorm.ScreenManager.GetCurrentScreenName());
-        }
-
-        [DebugCommand("Clears the debug console", "clear")]
-        private void Clear(string[] args)
-        {
-            Console.Clear();
         }
     }
 }

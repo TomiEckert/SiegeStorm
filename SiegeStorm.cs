@@ -10,22 +10,22 @@ namespace SiegeStorm
     public class SiegeStorm : Game
     {
         public static SiegeStorm Instance;
-        public static readonly TextureManager TextureManager = new TextureManager();
-        public static readonly SoundManager SoundManager = new SoundManager();
-        public static readonly StringManager StringManager = new StringManager();
-        public static readonly ScreenManager ScreenManager = new ScreenManager();
+        public static readonly AnimationManager AnimationManager = new AnimationManager();
+        public static readonly ItemManager ItemManager = new ItemManager();
         public static readonly LevelManager LevelManager = new LevelManager();
         public static readonly PlayerManager PlayerManager = new PlayerManager();
-        public static readonly ItemManager ItemManager = new ItemManager();
-        public static readonly AnimationManager AnimationManager = new AnimationManager();
+        public static readonly ScreenManager ScreenManager = new ScreenManager();
+        public static readonly SoundManager SoundManager = new SoundManager();
+        public static readonly StringManager StringManager = new StringManager();
+        public static readonly TextureManager TextureManager = new TextureManager();
 
+        public static ContentManager ContentManager;
         public static GraphicsDeviceManager Graphics;
         public static SpriteBatch SpriteBatch;
-        public static ContentManager ContentManager;
 
-        public static int ScreenWidth;
-        public static int ScreenHeight;
         public static bool FpsIsOn;
+        public static int ScreenHeight;
+        public static int ScreenWidth;
 
         private GameCursor cursor;
         private FrameCounter frameCounter;
@@ -82,7 +82,6 @@ namespace SiegeStorm
                 Exit();
             ScreenManager.Update(gameTime);
             SoundManager.Update(gameTime);
-            AnimationManager.Update(gameTime);
             cursor.Update(gameTime);
         }
 
