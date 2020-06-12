@@ -3,9 +3,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using SiegeStorm.Content;
 using SiegeStorm.GameObjects.MainMenu;
 using SiegeStorm.Managers;
 using System;
+using System.Collections.Generic;
 
 namespace SiegeStorm
 {
@@ -19,6 +21,7 @@ namespace SiegeStorm
         public static readonly LevelManager LevelManager = new LevelManager();
         public static readonly PlayerManager PlayerManager = new PlayerManager();
         public static readonly ItemManager ItemManager = new ItemManager();
+        public static readonly AnimationManager AnimationManager = new AnimationManager();
 
         public static GraphicsDeviceManager Graphics;
         public static SpriteBatch SpriteBatch;
@@ -83,6 +86,7 @@ namespace SiegeStorm
                 Exit();
             ScreenManager.Update(gameTime);
             SoundManager.Update(gameTime);
+            AnimationManager.Update(gameTime);
             cursor.Update(gameTime);
         }
 

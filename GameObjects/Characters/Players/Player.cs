@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Abstracts;
+using SiegeStorm.Content;
 using SiegeStorm.GameObjects.Items;
+using SiegeStorm.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +33,14 @@ namespace SiegeStorm.GameObjects.Characters.Players
             this.SetHealth();
             this.SetPower();
 
-            //TODO set texture
-            SetTexture(SiegeStorm.TextureManager.GetTexture(this));
-            //TODO set position
+            //Position
             var x = SiegeStorm.ScreenWidth / 6 - Texture.Width;
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;
-            SetPosition(new Vector2(x, y));
+            Vector2 position = new Vector2(x, y);
+            //Animation
+            SiegeStorm.AnimationManager.AddAnimation("runRight", new Animation(SiegeStorm.ContentManager.Load<Texture2D>("runRight"), 8), position);
+            SiegeStorm.AnimationManager.AddAnimation("runLeft", new Animation(SiegeStorm.ContentManager.Load<Texture2D>("runLeft"), 8), position);
+
         }
 
         public void SetVerticalPosition(int position)
@@ -52,9 +57,6 @@ namespace SiegeStorm.GameObjects.Characters.Players
         {
             return currentLane;
         }
-
-        //TODO movement
-        //TODO attack
 
         //Setters
         void SetHealth() 
@@ -173,7 +175,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
 
         public override void Draw(GameTime gameTime)
         {
-            base.Draw(gameTime);
+            SiegeStorm.AnimationManager.Draw(SiegeStorm.SpriteBatch);
         }
     }
 }
