@@ -1,11 +1,7 @@
-﻿using SiegeStorm.Abstracts;
-using SiegeStorm.GameObjects.Items;
-using System;
+﻿using SiegeStorm.GameObjects.Items;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.Managers
 {
@@ -20,7 +16,7 @@ namespace SiegeStorm.Managers
             GenerateWeapon();
         }
 
-        private void GenerateArmor() 
+        private void GenerateArmor()
         {
             var items = ReadItems("Armor.txt");
             Armor = new Dictionary<string, Armor>();
@@ -56,10 +52,10 @@ namespace SiegeStorm.Managers
                 var attributes = i.Split(':');
                 if (attributes.Count() != 4)
                     continue;
-                
+
                 var name = attributes[0];
                 var description = attributes[1];
-                
+
                 var stat = 0;
                 if (!int.TryParse(attributes[2], out stat))
                     continue;

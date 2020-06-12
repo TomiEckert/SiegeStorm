@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 
 namespace SiegeStorm.GameObjects.MainMenu
 {
-    class ButtonSettings : GameButton
+    internal class ButtonSettings : GameButton
     {
         public ButtonSettings()
         {

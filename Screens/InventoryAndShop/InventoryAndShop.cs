@@ -1,23 +1,17 @@
-﻿using System;
+﻿using SiegeStorm.Abstracts;
+using SiegeStorm.GameObjects.Characters.Players;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using SiegeStorm.Abstracts;
-using SiegeStorm.GameObjects.Characters.Players;
-using SiegeStorm.GameObjects.Items;
 
 namespace SiegeStorm.Screens
 {
-    class InventoryAndShop : GameScreen
+    internal class InventoryAndShop : GameScreen
     {
-        GameObjects.SettingsMenu.ButtonReturn returnButton;
-        GameObjects.InventoryAndShop.ButtonBuy buttonBuy;
-        GameObjects.InventoryAndShop.ButtonSell buttonSell;
+        private GameObjects.SettingsMenu.ButtonReturn returnButton;
+        private GameObjects.InventoryAndShop.ButtonBuy buttonBuy;
+        private GameObjects.InventoryAndShop.ButtonSell buttonSell;
         private Inventory inventory;
-        List<Item> ShopList = new List<Item>(); 
+        private List<Item> ShopList = new List<Item>();
 
         internal override void LoadContent()
         {
@@ -27,7 +21,6 @@ namespace SiegeStorm.Screens
             AddObject(buttonBuy);
         }
 
-        
         public override void ScreenOpen()
         {
             // TODO: Multiplayer
@@ -40,12 +33,10 @@ namespace SiegeStorm.Screens
             SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().SetInventory(inventory);
         }
 
-        
-        void InitializeShop()
+        private void InitializeShop()
         {
             // TODO generate shop from items!
             //ShopList.Add();
-
         }
     }
 }

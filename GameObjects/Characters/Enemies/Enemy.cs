@@ -1,16 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using SiegeStorm.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Characters.Enemies
 {
-    public class Enemy: Character
+    public class Enemy : Character
     {
-        public Enemy(): base("Enemy Lvl 1")
+        public Enemy() : base("Enemy Lvl 1")
         {
             //TODO set texture
             SetTexture(SiegeStorm.TextureManager.GetTexture(this));
@@ -19,6 +14,7 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;
             SetPosition(new Vector2(x, y));
         }
+
         //TODO movement
         //TODO attack
     }

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using SiegeStorm.GameScreens.Levels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using SiegeStorm.GameScreens.Levels;
 
 namespace SiegeStorm.Managers
 {
@@ -13,8 +11,8 @@ namespace SiegeStorm.Managers
     /// </summary>
     public class ScreenManager
     {
-        GameScreen currentScreen;
-        Dictionary<string, GameScreen> gameScreens;
+        private GameScreen currentScreen;
+        private Dictionary<string, GameScreen> gameScreens;
 
         public ScreenManager()
         {
@@ -47,7 +45,8 @@ namespace SiegeStorm.Managers
             gameScreens.Add("InventoryAndShop", new Screens.InventoryAndShop());
             // TODO manually add gameScreens and set current to MainMenu
 
-            foreach (var gameScreen in gameScreens) {
+            foreach (var gameScreen in gameScreens)
+            {
                 gameScreen.Value.LoadContent();
             }
             ChangeScreenTo("MainMenu");

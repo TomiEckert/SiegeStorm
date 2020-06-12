@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using SiegeStorm.Managers;
-
-namespace SiegeStorm.Screens
+﻿namespace SiegeStorm.Screens
 {
-    class MainMenu : GameScreen
+    internal class MainMenu : GameScreen
     {
-        GameObjects.MainMenu.Background bg;
-        GameObjects.MainMenu.ButtonStart start;
-        GameObjects.MainMenu.ButtonSettings settings;
-        GameObjects.MainMenu.ButtonExit exit;
+        private GameObjects.MainMenu.Background bg;
+        private GameObjects.MainMenu.ButtonStart start;
+        private GameObjects.MainMenu.ButtonSettings settings;
+        private GameObjects.MainMenu.ButtonExit exit;
 
         internal override void LoadContent()
         {

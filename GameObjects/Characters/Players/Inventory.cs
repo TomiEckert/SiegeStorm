@@ -1,17 +1,14 @@
 ﻿using SiegeStorm.Abstracts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Characters.Players
 {
-    
     public class Inventory
     {
-        List<Item> inventoryItems = new List<Item>();
-        int maxCapacity = 20;
+        private List<Item> inventoryItems = new List<Item>();
+        private int maxCapacity = 20;
+
         public void AddItemToInventory(Item item)
         {
             if (inventoryItems.Count <= maxCapacity)

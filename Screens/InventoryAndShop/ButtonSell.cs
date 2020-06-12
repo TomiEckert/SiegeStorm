@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 
 namespace SiegeStorm.GameObjects.InventoryAndShop
 {
-    class ButtonSell : GameButton
+    internal class ButtonSell : GameButton
     {
         public ButtonSell()
         {
@@ -12,9 +11,9 @@ namespace SiegeStorm.GameObjects.InventoryAndShop
             var y = SiegeStorm.ScreenHeight / 10 * 5 - Texture.Height;
             SetPosition(new Vector2(x, y));
         }
+
         public override void Pressed()
         {
-            
         }
     }
 }

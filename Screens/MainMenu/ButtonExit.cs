@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 
 namespace SiegeStorm.GameObjects.MainMenu
 {
-    class ButtonExit : GameButton
+    internal class ButtonExit : GameButton
     {
         public ButtonExit()
         {

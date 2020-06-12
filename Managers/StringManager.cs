@@ -1,17 +1,13 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.Managers
 {
     public class StringManager
     {
-        Dictionary<string, string> strings;
-        Dictionary<string, SpriteFont> fonts;
+        private Dictionary<string, string> strings;
+        private Dictionary<string, SpriteFont> fonts;
 
         public void LoadContent()
         {
@@ -22,8 +18,8 @@ namespace SiegeStorm.Managers
             fonts.Add("Default", font);
 
             var lines = File.ReadAllLines("Content/Strings.txt");
-            foreach (var line in lines) {
-
+            foreach (var line in lines)
+            {
                 if (line.Length < 4)
                     continue;
 

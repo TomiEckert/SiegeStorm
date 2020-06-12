@@ -3,7 +3,7 @@ using System;
 
 namespace SiegeStorm.GameObjects.MainMenu
 {
-    class ButtonLoad : GameButton
+    internal class ButtonLoad : GameButton
     {
         public ButtonLoad()
         {

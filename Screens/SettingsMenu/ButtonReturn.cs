@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 
 namespace SiegeStorm.GameObjects.SettingsMenu
 {
-    class ButtonReturn : GameButton
+    internal class ButtonReturn : GameButton
     {
         public ButtonReturn()
         {

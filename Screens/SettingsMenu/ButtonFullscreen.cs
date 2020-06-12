@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 
 namespace SiegeStorm.GameObjects.SettingsMenu
 {
-    class ButtonFullscreen : GameButton
+    internal class ButtonFullscreen : GameButton
     {
         public ButtonFullscreen()
         {

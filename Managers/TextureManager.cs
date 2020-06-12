@@ -1,18 +1,14 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.Managers
 {
     public class TextureManager
     {
-        Dictionary<string, FileInfo> textures;
-        Dictionary<GameObject, string> objects;
-        Dictionary<string, Texture2D> memory;
+        private Dictionary<string, FileInfo> textures;
+        private Dictionary<GameObject, string> objects;
+        private Dictionary<string, Texture2D> memory;
 
         public TextureManager()
         {
@@ -25,8 +21,9 @@ namespace SiegeStorm.Managers
         {
             DirectoryInfo dir = new DirectoryInfo("Content/Textures");
             FileInfo[] Files = dir.GetFiles("*.png");
-            foreach (FileInfo file in Files) {
-                var name = file.Name.Remove(file.Name.Length-file.Extension.Length);
+            foreach (FileInfo file in Files)
+            {
+                var name = file.Name.Remove(file.Name.Length - file.Extension.Length);
                 textures.Add(name, file);
             }
         }
@@ -37,7 +34,7 @@ namespace SiegeStorm.Managers
                 return GetTexture(obj, "default");
 
             Texture2D tex;
-            if(TryLoadFromMem(name, out tex))
+            if (TryLoadFromMem(name, out tex))
             {
                 AddToObjects(obj, name);
                 return tex;
@@ -58,13 +55,14 @@ namespace SiegeStorm.Managers
         private bool TryLoadFromMem(string name, out Texture2D tex)
         {
             tex = null;
-            if(memory.ContainsKey(name))
+            if (memory.ContainsKey(name))
             {
                 tex = memory[name];
                 return true;
             }
             return false;
         }
+
         private void RefreshMemory()
         {
             List<string> remove = new List<string>();
@@ -72,7 +70,7 @@ namespace SiegeStorm.Managers
             {
                 foreach (var o in objects.Values)
                 {
-                    if(o == key)
+                    if (o == key)
                     {
                         continue;
                     }
@@ -82,6 +80,7 @@ namespace SiegeStorm.Managers
 
             RemoveFromMemory(remove);
         }
+
         private Texture2D ReadTexFromFile(FileInfo file)
         {
             FileStream fs = new FileStream(file.FullName, FileMode.Open);
@@ -89,6 +88,7 @@ namespace SiegeStorm.Managers
             fs.Close();
             return tex;
         }
+
         private void AddToObjects(GameObject obj, string name)
         {
             if (objects.ContainsKey(obj))
@@ -96,22 +96,26 @@ namespace SiegeStorm.Managers
             else
                 objects.Add(obj, name);
         }
+
         private void RemoveFromObjects(GameObject obj)
         {
             if (objects.ContainsKey(obj))
                 objects.Remove(obj);
         }
+
         private void AddToMemory(string name, Texture2D tex)
         {
             if (memory.ContainsKey(name))
                 return;
             memory.Add(name, tex);
         }
+
         private void RemoveFromMemory(string name)
         {
             if (memory.ContainsKey(name))
                 memory.Remove(name);
         }
+
         private void RemoveFromMemory(IEnumerable<string> names)
         {
             foreach (var name in names)

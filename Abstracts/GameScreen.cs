@@ -1,15 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm
 {
     public abstract class GameScreen
     {
-        List<GameObject> gameObjects;
+        private List<GameObject> gameObjects;
 
         public GameScreen()
         {
@@ -47,7 +43,8 @@ namespace SiegeStorm
 
         public virtual void Update(GameTime gameTime)
         {
-            foreach (var gameObject in gameObjects) {
+            foreach (var gameObject in gameObjects)
+            {
                 gameObject.Update(gameTime); // TODO Implement update priority
             }
         }
@@ -56,7 +53,8 @@ namespace SiegeStorm
 
         public virtual void Draw(GameTime gameTime)
         {
-            foreach (var gameObject in gameObjects) {
+            foreach (var gameObject in gameObjects)
+            {
                 gameObject.Draw(gameTime); // TODO Implement draw priority/layers
             }
         }
@@ -66,6 +64,7 @@ namespace SiegeStorm
             LoadContent();
             ScreenOpen();
         }
+
         public virtual void ScreenOpen()
         {
         }
@@ -79,9 +78,9 @@ namespace SiegeStorm
             }
             gameObjects = new List<GameObject>();
         }
+
         public virtual void ScreenClose()
         {
-
         }
     }
 }

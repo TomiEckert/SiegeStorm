@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm
 {
@@ -28,10 +25,13 @@ namespace SiegeStorm
 
             _sampleBuffer.Enqueue(CurrentFramesPerSecond);
 
-            if (_sampleBuffer.Count > MAXIMUM_SAMPLES) {
+            if (_sampleBuffer.Count > MAXIMUM_SAMPLES)
+            {
                 _sampleBuffer.Dequeue();
                 AverageFramesPerSecond = _sampleBuffer.Average(i => i);
-            } else {
+            }
+            else
+            {
                 AverageFramesPerSecond = CurrentFramesPerSecond;
             }
 

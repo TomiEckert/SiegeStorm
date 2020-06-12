@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SiegeStorm.GameObjects.Characters.Enemies;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.GameScreens.Levels
 {
@@ -24,13 +20,11 @@ namespace SiegeStorm.GameScreens.Levels
 
         public int GetPosition()
         {
-            return (int) Position.Y;
+            return (int)Position.Y;
         }
 
         public override void Update(GameTime gameTime)
         {
-
         }
-
     }
 }

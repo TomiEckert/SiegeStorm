@@ -1,16 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using SiegeStorm.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Items
 {
     public class Weapon : Item
     {
-
         public Weapon(string name, string description, int statValue, int price) : base(name, description, statValue, price)
         {
             //get and set texture
@@ -23,7 +17,6 @@ namespace SiegeStorm.GameObjects.Items
 
         public Weapon(string[] attributes) : this(attributes[0], attributes[1], int.Parse(attributes[2]), int.Parse(attributes[3]))
         {
-
         }
     }
 }

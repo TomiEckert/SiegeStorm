@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm
 {
-    class DebugConsole
+    internal class DebugConsole
     {
-        Dictionary<string, MethodInfo> commands;
+        private Dictionary<string, MethodInfo> commands;
+
         public void RunConsole()
         {
             commands = new Dictionary<string, MethodInfo>();
@@ -21,7 +20,7 @@ namespace SiegeStorm
 
                 var command = input.Split(' ')[0];
                 string[] args = new string[] { "" };
-                if(input.Split(' ').Length > 1)
+                if (input.Split(' ').Length > 1)
                     args = input.Remove(0, command.Count() + 1).Split(' ');
 
                 RunCommand(command, args);
@@ -65,16 +64,18 @@ namespace SiegeStorm
             {
                 var coms = commands.Keys.ToArray();
                 Console.WriteLine("- " + string.Join(Environment.NewLine + "- ", coms));
-            } else
+            }
+            else
             {
-                if(commands.ContainsKey(arg))
+                if (commands.ContainsKey(arg))
                 {
                     var attr = commands[arg].GetCustomAttribute(typeof(DebugCommandAttribute)) as DebugCommandAttribute;
                     var h = "- " + arg + Environment.NewLine;
                     h = h + Environment.NewLine + "  Description:" + Environment.NewLine + "        " + attr.GetHelp();
                     h = h + Environment.NewLine + "  Usage:" + Environment.NewLine + "        " + attr.GetUsage();
                     Console.WriteLine(h);
-                } else
+                }
+                else
                 {
                     var coms = commands.Keys.ToArray();
                     Console.WriteLine("- " + string.Join(Environment.NewLine + "- ", coms));
@@ -92,9 +93,9 @@ namespace SiegeStorm
         private void Screen(string[] args)
         {
             var arg = args[0];
-            if(arg.Length != 0)
+            if (arg.Length != 0)
             {
-                if(SiegeStorm.ScreenManager.GetScreenNames().Contains(arg))
+                if (SiegeStorm.ScreenManager.GetScreenNames().Contains(arg))
                 {
                     SiegeStorm.ScreenManager.ChangeScreenTo(arg);
                 }

@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 
 namespace SiegeStorm.GameObjects.MainMenu
 {
-    class ButtonStart : GameButton
+    internal class ButtonStart : GameButton
     {
         public ButtonStart()
         {
@@ -12,6 +11,7 @@ namespace SiegeStorm.GameObjects.MainMenu
             var y = SiegeStorm.ScreenHeight / 10 * 5 - Texture.Height;
             SetPosition(new Vector2(x, y));
         }
+
         public override void Pressed()
         {
             SiegeStorm.ScreenManager.ChangeScreenTo("Map");

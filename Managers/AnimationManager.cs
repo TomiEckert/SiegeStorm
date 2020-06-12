@@ -1,11 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SiegeStorm.Content;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.Managers
 {
@@ -20,11 +16,13 @@ namespace SiegeStorm.Managers
             this.sprites = new List<Sprite>();
         }
 
-        public void AddAnimation(string name, Animation animation, Vector2 position) {
+        public void AddAnimation(string name, Animation animation, Vector2 position)
+        {
             this.animations.Add(name, animation);
             this.sprites = new List<Sprite>();
             this.sprites.Add(
-                new Sprite() { 
+                new Sprite()
+                {
                     Position = position
                 }
             );
@@ -44,7 +42,7 @@ namespace SiegeStorm.Managers
 
         public void Update(GameTime gameTime)
         {
-            foreach(var sprite in this.sprites)
+            foreach (var sprite in this.sprites)
             {
                 sprite.Update(gameTime);
             }
@@ -52,7 +50,7 @@ namespace SiegeStorm.Managers
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach(var sprite in this.sprites)
+            foreach (var sprite in this.sprites)
             {
                 sprite.Draw(spriteBatch);
             }

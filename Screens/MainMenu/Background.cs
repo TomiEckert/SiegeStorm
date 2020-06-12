@@ -1,15 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.MainMenu
 {
-    class Background : GameObject
+    internal class Background : GameObject
     {
-       public Background()
+        public Background()
         {
             SetTexture(SiegeStorm.TextureManager.GetTexture(this, "bg"));
             SetPosition(new Vector2(0, 0));
@@ -17,8 +12,7 @@ namespace SiegeStorm.GameObjects.MainMenu
 
         public override void Draw(GameTime gameTime)
         {
-            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(0,0, SiegeStorm.ScreenWidth, SiegeStorm.ScreenHeight), Color.White);
-
+            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(0, 0, SiegeStorm.ScreenWidth, SiegeStorm.ScreenHeight), Color.White);
         }
     }
 }

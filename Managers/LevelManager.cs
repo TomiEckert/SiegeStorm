@@ -1,28 +1,24 @@
-﻿using Microsoft.Xna.Framework;
-using SiegeStorm.GameObjects.Characters.Enemies;
+﻿using SiegeStorm.GameObjects.Characters.Enemies;
 using SiegeStorm.GameScreens.Levels;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Mime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.Managers
 {
     public class LevelManager
     {
-        Dictionary<string, Level> levels;
-        Dictionary<string, LevelData> levelData;
+        private Dictionary<string, Level> levels;
+        private Dictionary<string, LevelData> levelData;
 
-        const string FILE = "Content/Levels.txt";
+        private const string FILE = "Content/Levels.txt";
 
         public LevelManager()
         {
             this.levels = new Dictionary<string, Level>();
             this.levelData = new Dictionary<string, LevelData>();
         }
+
         public void LoadContent()
         {
             levels = new Dictionary<string, Level>();
@@ -83,20 +79,21 @@ namespace SiegeStorm.Managers
                 List<Enemy> enemies = new List<Enemy>();
                 foreach (var e in enemyQueue)
                 {
-                    if(e == 'x')
+                    if (e == 'x')
                     {
                         enemies.Add(new Enemy());
-                    } else if(e == ' ')
+                    }
+                    else if (e == ' ')
                     {
                         enemies.Add(null);
-                    } else
+                    }
+                    else
                     {
                         continue;
                     }
                 }
                 lanes[laneID].SetEnemies(enemies);
             }
-
 
             data = new LevelData(name, unlock);
             level = new Level(lanes, enemiesPerWave);
@@ -145,14 +142,14 @@ namespace SiegeStorm.Managers
         /// <returns></returns>
         public string GetLevelName(Level level)
         {
-            if(levels.ContainsValue(level))
+            if (levels.ContainsValue(level))
             {
                 return levels.FirstOrDefault(x => x.Value == level).Key;
             }
             return null;
         }
 
-        class LevelData
+        private class LevelData
         {
             public string Name;
             public string UnlockName;

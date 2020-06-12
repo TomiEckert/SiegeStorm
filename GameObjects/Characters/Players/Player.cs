@@ -4,27 +4,21 @@ using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Abstracts;
 using SiegeStorm.Content;
 using SiegeStorm.GameObjects.Items;
-using SiegeStorm.Managers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.Characters.Players
 {
-    public class Player: Character
+    public class Player : Character
     {
-        int xp;
-        int gold;
-        int health;
-        int power;
-        Armor armor;
-        Weapon weapon;
-        Inventory inventory;
-        int currentLane;
+        private int xp;
+        private int gold;
+        private int health;
+        private int power;
+        private Armor armor;
+        private Weapon weapon;
+        private Inventory inventory;
+        private int currentLane;
 
-        public Player(string name): base(name)
+        public Player(string name) : base(name)
         {
             this.xp = 0;
             this.gold = 50;
@@ -40,7 +34,6 @@ namespace SiegeStorm.GameObjects.Characters.Players
             //Animation
             SiegeStorm.AnimationManager.AddAnimation("runRight", new Animation(SiegeStorm.ContentManager.Load<Texture2D>("runRight"), 8), position);
             SiegeStorm.AnimationManager.AddAnimation("runLeft", new Animation(SiegeStorm.ContentManager.Load<Texture2D>("runLeft"), 8), position);
-
         }
 
         public void SetVerticalPosition(int position)
@@ -59,11 +52,12 @@ namespace SiegeStorm.GameObjects.Characters.Players
         }
 
         //Setters
-        void SetHealth() 
+        private void SetHealth()
         {
             this.health = this.GetBaseHealth() + this.armor.GetStatValue();
         }
-        void SetPower()
+
+        private void SetPower()
         {
             this.power = this.GetBasePower() + this.weapon.GetStatValue();
         }
@@ -72,7 +66,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         {
             return inventory;
         }
-        
+
         public void SetInventory(Inventory newInventory)
         {
             inventory = newInventory;
@@ -93,6 +87,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
                 this.power += item.GetStatValue();
             }
         }
+
         //Unequipping item, changing corresponding stats (health / power)
         public void UnequipItem(Item item)
         {
@@ -101,15 +96,16 @@ namespace SiegeStorm.GameObjects.Characters.Players
                 this.health -= armor.GetStatValue();
             }
             else
-            { 
+            {
                 this.power -= weapon.GetStatValue();
             }
         }
+
         //Increasing xp and leveling up
         public void AddXP(int amount)
         {
             this.xp += amount;
-            if(this.xp >= this.getLevel()*100)
+            if (this.xp >= this.getLevel() * 100)
             {
                 this.xp -= this.getLevel() * 100;
                 this.LevelUp();
@@ -123,14 +119,16 @@ namespace SiegeStorm.GameObjects.Characters.Players
         {
             this.gold += amount;
         }
+
         //Removing gold
         public void RemoveGold(int amount)
         {
             this.gold -= amount;
         }
 
-        bool wDown;
-        bool sDown;
+        private bool wDown;
+        private bool sDown;
+
         public override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.D) && Position.X < (SiegeStorm.ScreenWidth - Texture.Width))
@@ -143,7 +141,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
                 SetPosition(new Vector2(Position.X - 5, Position.Y));
             }
 
-            if(Keyboard.GetState().IsKeyDown(Keys.W) && !wDown)
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && !wDown)
             {
                 wDown = true;
             }
@@ -157,7 +155,8 @@ namespace SiegeStorm.GameObjects.Characters.Players
             {
                 SetLane(currentLane + 1);
                 sDown = false;
-            } else if (Keyboard.GetState().IsKeyUp(Keys.S) && currentLane == 4 && sDown)
+            }
+            else if (Keyboard.GetState().IsKeyUp(Keys.S) && currentLane == 4 && sDown)
             {
                 sDown = false;
             }
@@ -166,11 +165,11 @@ namespace SiegeStorm.GameObjects.Characters.Players
             {
                 SetLane(currentLane - 1);
                 wDown = false;
-            } else if (Keyboard.GetState().IsKeyUp(Keys.W) && currentLane == 0 && wDown)
+            }
+            else if (Keyboard.GetState().IsKeyUp(Keys.W) && currentLane == 0 && wDown)
             {
                 wDown = false;
             }
-
         }
 
         public override void Draw(GameTime gameTime)

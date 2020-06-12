@@ -1,20 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.GameScreens.Levels
 {
     public class Level : GameScreen
     {
-        int levelTop;
-        Lane[] lanes;
-        int enemiesPerWave;
-        const int INITIAL_DELAY = 5000;
-        int delay = 0;
-        
+        private int levelTop;
+        private Lane[] lanes;
+        private int enemiesPerWave;
+        private const int INITIAL_DELAY = 5000;
+        private int delay = 0;
+
         public Level(Lane[] lanes, int enemiesPerWave)
         {
             this.lanes = lanes;

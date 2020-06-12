@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 
 namespace SiegeStorm.GameObjects.SettingsMenu
 {
-    class ButtonFPS : GameButton
+    internal class ButtonFPS : GameButton
     {
         public ButtonFPS()
         {
@@ -15,7 +14,7 @@ namespace SiegeStorm.GameObjects.SettingsMenu
 
         public override void Pressed()
         {
-            if(SiegeStorm.FpsIsOn == false)
+            if (SiegeStorm.FpsIsOn == false)
 
             {
                 SiegeStorm.FpsIsOn = true;

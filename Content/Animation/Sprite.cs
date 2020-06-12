@@ -3,10 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Managers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.Content
 {
@@ -22,11 +19,13 @@ namespace SiegeStorm.Content
             set
             {
                 this.position = value;
-                if (this.animationPlayer != null) {
+                if (this.animationPlayer != null)
+                {
                     this.animationPlayer.Position = this.position;
                 }
             }
         }
+
         public float Speed = 5f;
         public Vector2 Velocity;
 
@@ -37,11 +36,11 @@ namespace SiegeStorm.Content
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if(this.texture != null)
+            if (this.texture != null)
             {
                 spriteBatch.Draw(this.texture, this.Position, Color.White);
             }
-            else if(this.animationPlayer != null)
+            else if (this.animationPlayer != null)
             {
                 this.animationPlayer.Draw(spriteBatch);
             }
@@ -53,7 +52,8 @@ namespace SiegeStorm.Content
 
         protected virtual void Move()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.D)){
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
                 this.Velocity.X = Speed;
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.A))
@@ -78,7 +78,8 @@ namespace SiegeStorm.Content
             }
         }
 
-        public virtual void Update(GameTime gameTime) {
+        public virtual void Update(GameTime gameTime)
+        {
             Move();
 
             SetAnimations();

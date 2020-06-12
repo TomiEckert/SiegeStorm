@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 namespace SiegeStorm
 {
 #if WINDOWS || LINUX
+
     /// <summary>
     /// The main class.
     /// </summary>
@@ -13,7 +14,7 @@ namespace SiegeStorm
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
 #if DEBUG
             Task.Run(() => { new DebugConsole().RunConsole(); });
@@ -22,5 +23,6 @@ namespace SiegeStorm
                 game.Run();
         }
     }
+
 #endif
 }

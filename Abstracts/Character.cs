@@ -1,19 +1,11 @@
-﻿using SiegeStorm.GameObjects.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiegeStorm.Abstracts
+﻿namespace SiegeStorm.Abstracts
 {
-    public abstract class Character: GameObject
+    public abstract class Character : GameObject
     {
-        string name;
-        int level;
-        int basePower;
-        int baseHealth;
+        private string name;
+        private int level;
+        private int basePower;
+        private int baseHealth;
 
         public Character(string name)
         {
@@ -28,14 +20,17 @@ namespace SiegeStorm.Abstracts
         {
             return this.name;
         }
+
         public int getLevel()
         {
             return this.level;
         }
+
         public int GetBasePower()
         {
             return this.basePower;
         }
+
         public int GetBaseHealth()
         {
             return this.baseHealth;
@@ -48,6 +43,5 @@ namespace SiegeStorm.Abstracts
             this.basePower = 10 * this.level;
             this.baseHealth = 25 * this.level + 50;
         }
-
     }
 }

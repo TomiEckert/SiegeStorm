@@ -1,9 +1,4 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.Content
 {
@@ -17,7 +12,8 @@ namespace SiegeStorm.Content
         public float FrameSpeed { get; set; }
         public bool IsLooping { get; set; }
 
-        public Animation(Texture2D texture, int frameCount) {
+        public Animation(Texture2D texture, int frameCount)
+        {
             this.Texture = texture;
             this.FrameCount = frameCount;
             this.FrameSpeed = 0.2f;

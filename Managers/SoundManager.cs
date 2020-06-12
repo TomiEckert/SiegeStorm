@@ -1,14 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiegeStorm.Managers
 {
@@ -32,22 +28,26 @@ namespace SiegeStorm.Managers
             // Loading songs for the game
             DirectoryInfo dir = new DirectoryInfo("Content/Sounds/Songs");
             FileInfo[] Files = dir.GetFiles("*.mp3");
-            foreach (FileInfo file in Files) {
+            foreach (FileInfo file in Files)
+            {
                 var name = file.Name.Remove(file.Name.Length - file.Extension.Length);
                 var sound = Song.FromUri(name, new Uri(file.FullName));
-                if (!songs.ContainsKey(name)) {
+                if (!songs.ContainsKey(name))
+                {
                     songs.Add(name, sound);
                 }
             }
 
             dir = new DirectoryInfo("Content/Sounds/SoundEffects");
             Files = dir.GetFiles("*.wav");
-            foreach (FileInfo file in Files) {
+            foreach (FileInfo file in Files)
+            {
                 var name = file.Name.Remove(file.Name.Length - file.Extension.Length);
                 FileStream fs = new FileStream(file.FullName, FileMode.Open);
                 var sound = SoundEffect.FromStream(fs);
                 fs.Close();
-                if (!sfx.ContainsKey(name)) {
+                if (!sfx.ContainsKey(name))
+                {
                     sfx.Add(name, sound);
                 }
             }
@@ -56,7 +56,8 @@ namespace SiegeStorm.Managers
         private int GenerateID()
         {
             int id = 0;
-            do {
+            do
+            {
                 id = random.Next(1000, 9999);
             } while (sfxPlaying.ContainsKey(id));
 
@@ -87,7 +88,8 @@ namespace SiegeStorm.Managers
         {
             var sound = GetSFX(name);
             var id = GenerateID();
-            if (sound != null) {
+            if (sound != null)
+            {
                 var i = sound.CreateInstance();
                 sfxPlaying.Add(id, i);
                 i.IsLooped = false;
@@ -99,7 +101,8 @@ namespace SiegeStorm.Managers
 
         public void StopSFX(int id)
         {
-            if (sfxPlaying.ContainsKey(id)) {
+            if (sfxPlaying.ContainsKey(id))
+            {
                 sfxPlaying[id].Stop();
                 sfxPlaying.Remove(id);
             }
@@ -113,8 +116,10 @@ namespace SiegeStorm.Managers
         public void Update(GameTime gameTime)
         {
             var tmp = sfxPlaying.ToArray();
-            foreach (var fx in tmp) {
-                if(fx.Value.State == SoundState.Stopped) {
+            foreach (var fx in tmp)
+            {
+                if (fx.Value.State == SoundState.Stopped)
+                {
                     if (sfxPlaying.ContainsKey(fx.Key))
                         sfxPlaying.Remove(fx.Key);
                 }
