@@ -14,6 +14,7 @@ namespace SiegeStorm
         public static readonly ItemManager ItemManager = new ItemManager();
         public static readonly LevelManager LevelManager = new LevelManager();
         public static readonly PlayerManager PlayerManager = new PlayerManager();
+        public static readonly EnemyManager EnemyManager = new EnemyManager();
         public static readonly ScreenManager ScreenManager = new ScreenManager();
         public static readonly SoundManager SoundManager = new SoundManager();
         public static readonly StringManager StringManager = new StringManager();
@@ -65,6 +66,7 @@ namespace SiegeStorm
             TextureManager.LoadContent();
             ItemManager.LoadContent();
             PlayerManager.LoadContent();
+            EnemyManager.LoadContent();
             StringManager.LoadContent();
             LevelManager.LoadContent();
             ScreenManager.LoadContent();

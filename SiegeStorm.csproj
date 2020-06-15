@@ -58,6 +58,7 @@
     <Compile Include="GameObjects\Characters\Players\Inventory.cs" />
     <Compile Include="GameObjects\Characters\Players\Player.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
+    <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonSell.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonBuy.cs" />
     <Compile Include="GameObjects\Items\Armor.cs" />
