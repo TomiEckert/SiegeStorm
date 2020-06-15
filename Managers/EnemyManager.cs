@@ -12,16 +12,19 @@ namespace SiegeStorm.Managers
 
         public void LoadContent()
         {
-            var e = new Enemy();
-            enemies.Add("one", e);
+            for (int i = 1; i <= 5; i++)
+            {
+                var e = new Enemy();
+                enemies.Add(i.ToString(), e);
+            }
         }
 
-        public Enemy[] GetPlayers()
+        public Enemy[] GetEnemies()
         {
             return enemies.Values.ToArray();
         }
 
-        public Enemy GetPlayer(string name)
+        public Enemy GetEnemy(string name)
         {
             if (enemies.ContainsKey(name))
                 return enemies[name];

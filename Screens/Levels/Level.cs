@@ -34,6 +34,15 @@ namespace SiegeStorm.GameScreens.Levels
         {
             var player = SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault();
             player.SetVerticalPosition(lanes[player.GetLane()].GetPosition());
+
+            for (int i = 0; i < 5; i++)
+            {
+                var enemy = SiegeStorm.EnemyManager.GetEnemies()[i];
+                enemy.SetVerticalPosition(lanes[enemy.GetLane()].GetPosition());
+            }
+            
+      
+    
             base.Update(gameTime);
         }
 
@@ -41,6 +50,11 @@ namespace SiegeStorm.GameScreens.Levels
         {
             AddObject(SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault());
             SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().SetLane(0);
+            for (int i = 0; i < 5; i++)
+            {
+                AddObject(SiegeStorm.EnemyManager.GetEnemies()[i]);
+                SiegeStorm.EnemyManager.GetEnemies()[i].SetLane(i);
+            }
         }
 
         public override void ScreenClose()
