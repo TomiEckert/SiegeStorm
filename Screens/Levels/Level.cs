@@ -29,20 +29,33 @@ namespace SiegeStorm.GameScreens.Levels
                 lanes[i].SetPosition(levelTop * (2 + i) - levelTop / 2);
             }
         }
-
+        bool count = true;
         public override void Update(GameTime gameTime)
         {
             var player = SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault();
             player.SetVerticalPosition(lanes[player.GetLane()].GetPosition());
+            
 
             for (int i = 0; i < 5; i++)
             {
-                var enemy = SiegeStorm.EnemyManager.GetEnemies()[i];
-                enemy.SetVerticalPosition(lanes[enemy.GetLane()].GetPosition());
+                if(count == true)
+                {
+                    var enemy = SiegeStorm.EnemyManager.GetEnemies()[i];
+                    enemy.SetPositionXY(SiegeStorm.ScreenWidth - 200, lanes[enemy.GetLane()].GetPosition());
+                   
+                }
+                else
+                {
+                    var enemy = SiegeStorm.EnemyManager.GetEnemies()[i];
+                    enemy.SetVerticalPosition(lanes[enemy.GetLane()].GetPosition());
+
+                }
+                
+                
             }
-            
-      
-    
+            count = false;
+
+
             base.Update(gameTime);
         }
 
@@ -55,6 +68,7 @@ namespace SiegeStorm.GameScreens.Levels
                 AddObject(SiegeStorm.EnemyManager.GetEnemies()[i]);
                 SiegeStorm.EnemyManager.GetEnemies()[i].SetLane(i);
             }
+          
         }
 
         public override void ScreenClose()

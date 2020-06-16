@@ -1,4 +1,5 @@
-﻿using SiegeStorm.GameObjects.Characters.Players;
+﻿using Microsoft.Xna.Framework;
+using SiegeStorm.GameObjects.Characters.Players;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,6 +20,7 @@ namespace SiegeStorm.Managers
             return players.Values.ToArray();
         }
 
+     
         public Player GetPlayer(string name)
         {
             if (players.ContainsKey(name))

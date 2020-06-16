@@ -30,6 +30,11 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
             SetPosition(new Vector2(position, Position.Y));
         }
 
+        public void SetPositionXY(int positionX, int positionY)
+        {
+            SetPosition(new Vector2(positionX, positionY));
+        }
+
         public void SetLane(int lane)
         {
             currentLane = lane;
@@ -42,18 +47,18 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         private bool turn;
         public override void Update(GameTime gameTime)
         {
-       
-            if (Position.X > (SiegeStorm.ScreenWidth - Texture.Width))
+
+            if (Position.X == (SiegeStorm.ScreenWidth - 180))
             {
-                turn = true;        
+                turn = true;
             }
-            else if(Position.X <= 0)
+            else if (Position.X == 0)
             {
                 turn = false;
             }
-            if(turn)
+            if (turn)
             {
-               SetPosition(new Vector2(Position.X - 5, Position.Y));
+                SetPosition(new Vector2(Position.X - 5, Position.Y));
             }
             else
             {
