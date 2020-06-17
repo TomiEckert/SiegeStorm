@@ -13,7 +13,9 @@ namespace SiegeStorm.GameObjects.HUD
 
         public Healthbar()
         {
-
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "healthbar"));
+            var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
+            var y = SiegeStorm.ScreenHeight / 10 * 5 - Texture.Height;
         }
 
         public void Update(int currentHealth)
@@ -24,6 +26,7 @@ namespace SiegeStorm.GameObjects.HUD
         public void Draw()
         {
             float healthPercentage = currentHealth / maxHealth;
+
 
         }
     }
