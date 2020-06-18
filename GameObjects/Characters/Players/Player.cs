@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Abstracts;
+using SiegeStorm.GameObjects.HUD;
 using SiegeStorm.GameObjects.Items;
 
 namespace SiegeStorm.GameObjects.Characters.Players
@@ -17,6 +18,8 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private Shop shop;
         private int currentLane;
         private Animation walk;
+        private Healthbar healthbar;
+        
 
         public Player(string name) : base(name)
         {
@@ -33,6 +36,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
             Vector2 position = new Vector2(x, y);
 
             walk = SiegeStorm.AnimationManager.GetAnimation("walk");
+            healthbar = new Healthbar();
         }
 
         public void SetVerticalPosition(int position)
@@ -179,11 +183,14 @@ namespace SiegeStorm.GameObjects.Characters.Players
             {
                 wDown = false;
             }
+
+            healthbar.SetHealth(health, Position);
         }
 
         public override void Draw(GameTime gameTime)
         {
             walk.Draw(gameTime, Position);
+            healthbar.Draw(gameTime);
         }
     }
 }
