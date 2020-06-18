@@ -3,3 +3,6 @@
 # rest is enemy ('x') or nothing (' ')
 # we can control the flow of enemies with this
 First battle:none:4:1x   xx      xxxxxxxx:3x   xx  xxxx    xxxx
+Second battle:none:4:1x   xx      xxxxxxxx:3x   xx  xxxx    xxxx
+Battle of Hastings:none:4:1x   xx      xxxxxxxx:3x   xx  xxxx    xxxx
+Level battle:none:4:1x   xx      xxxxxxxx:3x   xx  xxxx    xxxx

@@ -16,16 +16,16 @@ namespace SiegeStorm.Screens
 
         internal override void LoadContent()
         {
-            int posX = 1;
-            int posY = 1;
+            int posX = SiegeStorm.ScreenWidth / 4;
+            int posY = SiegeStorm.ScreenHeight / 4;
             foreach (var level in levels)
             {
                 AddObject(new MapNode(level, posX, posY));
-                posX += 3;
-                if (posX >= 9)
+                posX += SiegeStorm.ScreenWidth / 4;
+                if (posX > 3 * SiegeStorm.ScreenWidth / 4)
                 {
-                    posX = 1;
-                    posY++;
+                    posX = SiegeStorm.ScreenWidth / 4;
+                    posY += SiegeStorm.ScreenHeight / 4;
                 }
             }
 
