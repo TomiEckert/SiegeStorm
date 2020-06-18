@@ -8,8 +8,9 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
     {
         private int currentLane;
         private Vector2 position;
-        private Animation walk;
-   
+        private Animation walkLeft;
+        private Animation walkRight;
+
         public Enemy() : base("Enemy Lvl 1")
         {          
             //TODO set position
@@ -17,7 +18,8 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height ;
 
             position = new Vector2(x, y);
-            walk = SiegeStorm.AnimationManager.GetAnimation("enemyDefault");
+            walkLeft = SiegeStorm.AnimationManager.GetAnimation("enemyDefaultLeft");
+            walkRight = SiegeStorm.AnimationManager.GetAnimation("enemyDefaultRight");
             // SetPosition(new Vector2(x, y));
         }
    
@@ -69,7 +71,23 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         }
         public override void Draw(GameTime gameTime)
         {
-            walk.Draw(gameTime, Position);
+            if (Position.X == (SiegeStorm.ScreenWidth - 180))
+            {
+                turn = true;
+            }
+            else if (Position.X == 0)
+            {
+                turn = false;
+            }
+            if(turn)
+            {
+                walkLeft.Draw(gameTime, Position);
+            }
+            else
+            {
+                walkRight.Draw(gameTime, Position);
+            }
+            
         }
         //TODO movement
         //TODO attack

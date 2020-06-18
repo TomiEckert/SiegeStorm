@@ -14,6 +14,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private Armor armor;
         private Weapon weapon;
         private Inventory inventory;
+        private Shop shop;
         private int currentLane;
         private Animation walk;
 
@@ -68,6 +69,16 @@ namespace SiegeStorm.GameObjects.Characters.Players
         public void SetInventory(Inventory newInventory)
         {
             inventory = newInventory;
+        }
+
+        public void SetShop(Shop newShop)
+        {
+            shop = newShop;
+        }
+
+        public Shop GetShop()
+        {
+            return shop;
         }
 
         //Equipping item, changing corresponding stats (health / power)
