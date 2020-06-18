@@ -14,6 +14,8 @@ namespace SiegeStorm
 
         private double currentTime;
         private int height = SiegeStorm.ScreenHeight / 6;
+        public delegate void animationDoneEvent();
+        public event animationDoneEvent AnimationDone;
 
         public Animation(FileInfo[] files)
         {
@@ -38,7 +40,10 @@ namespace SiegeStorm
                 currentTime = 0;
                 CurrentFrame++;
                 if (CurrentFrame == FrameCount)
+                {
+                    AnimationDone();
                     CurrentFrame = 0;
+                }
             }
 
             SiegeStorm.SpriteBatch.Draw(Texture[CurrentFrame], new Rectangle(position.ToPoint(), new Point(height, height)), Color.White);
