@@ -19,6 +19,7 @@ namespace SiegeStorm
 
         public Animation(FileInfo[] files)
         {
+            AnimationDone += Animation_AnimationDone;
             List<Texture2D> tex = new List<Texture2D>();
             foreach (var file in files)
             {
@@ -30,6 +31,11 @@ namespace SiegeStorm
             CurrentFrame = 0;
             FrameCount = Texture.Length;
             FrameSpeed = 30;
+        }
+
+        private void Animation_AnimationDone()
+        {
+
         }
 
         internal void Draw(GameTime gameTime, Vector2 position)
