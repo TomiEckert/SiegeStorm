@@ -4,9 +4,10 @@ namespace SiegeStorm.GameObjects.SettingsMenu
 {
     internal class ButtonFullscreen : GameButton
     {
+        private bool isFullscreen = false;
         public ButtonFullscreen()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "fullscreenButton"));
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "DisabledButton"));
             var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
             var y = SiegeStorm.ScreenHeight / 10 * 5 - Texture.Height;
             SetPosition(new Vector2(x, y));
@@ -14,7 +15,20 @@ namespace SiegeStorm.GameObjects.SettingsMenu
 
         public override void Pressed()
         {
-            SiegeStorm.Graphics.ToggleFullScreen();
+            if (isFullscreen == false)
+            {
+                SiegeStorm.Graphics.ToggleFullScreen();
+                SetTexture(SiegeStorm.TextureManager.GetTexture(this, "EnabledButton"));
+                isFullscreen = true;
+            }
+            else
+            {
+                SiegeStorm.Graphics.ToggleFullScreen();
+                SetTexture(SiegeStorm.TextureManager.GetTexture(this, "DisabledButton"));
+                isFullscreen = false;
+            }
+
+
         }
     }
 }

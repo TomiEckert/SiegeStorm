@@ -10,8 +10,9 @@ namespace SiegeStorm.Screens
         private GameObjects.SettingsMenu.ButtonReturn returnButton;
         private GameObjects.InventoryAndShop.ButtonBuy buttonBuy;
         private GameObjects.InventoryAndShop.ButtonSell buttonSell;
+        private List<GameObjects.InventoryAndShop.ItemButton> itemButtons = new List<GameObjects.InventoryAndShop.ItemButton>();
         private Inventory inventory;
-        private Shop shop;
+        private Shop shop; 
 
         internal override void LoadContent()
         {
@@ -19,6 +20,7 @@ namespace SiegeStorm.Screens
             AddObject(buttonSell);
             buttonBuy = new GameObjects.InventoryAndShop.ButtonBuy();
             AddObject(buttonBuy);
+
         }
 
         public override void ScreenOpen()
@@ -33,12 +35,22 @@ namespace SiegeStorm.Screens
             //TODO : Multiplayer
             SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().SetInventory(inventory);
             SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().SetShop(shop);
+
         }
 
-        private void InitializeShop()
+        public void Initialize()
         {
-            // TODO: generate shop from items!
-            //shop.AddItemToShop();
+            shop.GetShopItems();
+            foreach (var item in shop.GetShopItems())
+            {
+                string name = item.GetName();
+                string desc = item.GetDescription();
+                int price = item.GetPrice();
+                int stat = item.GetStatValue();
+
+                GameObjects.InventoryAndShop.ItemButton itemItemButton = new GameObjects.InventoryAndShop.ItemButton(name, desc, price, stat);
+                itemButtons.Add(itemItemButton);
+            }
         }
     }
 }

@@ -81,6 +81,11 @@ namespace SiegeStorm.GameObjects.Characters.Players
             return shop;
         }
 
+        public void AddItemToShop(Item item)
+        {
+            shop.AddItemToShop(item);
+        }
+
         //Equipping item, changing corresponding stats (health / power)
         public void EquipItem(Item item)
         {

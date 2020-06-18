@@ -40,6 +40,19 @@ namespace SiegeStorm.Managers
             }
         }
 
+        public void AddToShop()
+        {
+            foreach (var armor in Armor)
+            {
+                SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().AddItemToShop(armor.Value);
+            }
+
+            foreach (var weapon in Weapons)
+            {
+                SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().AddItemToShop(weapon.Value);
+            }
+        }
+
         private List<string[]> ReadItems(string file)
         {
             var text = File.ReadAllLines("Content/" + file);

@@ -12,5 +12,10 @@ namespace SiegeStorm.GameObjects.Characters.Players
         {
             shopItems.Add(item);
         }
+
+        public List<Item> GetShopItems()
+        {
+            return shopItems;
+        }
     }
 }
