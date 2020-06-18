@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Abstracts;
+using SiegeStorm.GameObjects.Characters.Enemies;
 using SiegeStorm.GameObjects.Items;
+using SiegeStorm.Managers;
+using System.Linq.Expressions;
 
 namespace SiegeStorm.GameObjects.Characters.Players
 {
@@ -16,6 +19,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private Inventory inventory;
         private int currentLane;
         private Animation walk;
+        private Animation die;
 
         public Player(string name) : base(name)
         {
@@ -32,6 +36,8 @@ namespace SiegeStorm.GameObjects.Characters.Players
             Vector2 position = new Vector2(x, y);
 
             walk = SiegeStorm.AnimationManager.GetAnimation("walk");
+            die = SiegeStorm.AnimationManager.GetAnimation("die");
+            
         }
 
         public void SetVerticalPosition(int position)
@@ -126,6 +132,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
 
         private bool wDown;
         private bool sDown;
+        private bool alive = true;
 
         public override void Update(GameTime gameTime)
         {
@@ -168,11 +175,31 @@ namespace SiegeStorm.GameObjects.Characters.Players
             {
                 wDown = false;
             }
+
+            // Player - Enemy collision
+            for (int i = 0; i < SiegeStorm.EnemyManager.GetEnemies().Length; i++)
+            {
+                if (SiegeStorm.EnemyManager.GetEnemies()[i].GetLane() == GetLane() &&
+                    SiegeStorm.EnemyManager.GetEnemies()[i].getPositionX() == (Position.X + Texture.Width))
+                {
+                    alive = false;
+                }
+
+            }
+
         }
 
         public override void Draw(GameTime gameTime)
         {
-            walk.Draw(gameTime, Position);
+            if(alive == false)
+            {
+                die.Draw(gameTime, Position);
+            }
+            else
+            {
+                walk.Draw(gameTime, Position);
+            }
+            
         }
     }
 }

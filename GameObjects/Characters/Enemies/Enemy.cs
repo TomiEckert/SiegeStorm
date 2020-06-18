@@ -29,7 +29,14 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         {
             SetPosition(new Vector2(position, Position.Y));
         }
-
+        public float getPositionX()
+        {
+            return Position.X;
+        }
+        public float getPositionY()
+        {
+            return Position.Y;
+        }
         public void SetPositionXY(int positionX, int positionY)
         {
             SetPosition(new Vector2(positionX, positionY));
