@@ -58,6 +58,7 @@
     <Compile Include="GameObjects\Characters\Players\Shop.cs" />
     <Compile Include="GameObjects\Characters\Players\Inventory.cs" />
     <Compile Include="GameObjects\Characters\Players\Player.cs" />
+    <Compile Include="GameObjects\HUD\Healthbar.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonSell.cs" />
@@ -211,6 +212,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Animation\Textures\anim_enemyDefaultLeft_00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_die_00.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Levels.txt">

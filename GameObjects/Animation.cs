@@ -14,9 +14,12 @@ namespace SiegeStorm
 
         private double currentTime;
         private int height = SiegeStorm.ScreenHeight / 6;
+        public delegate void animationDoneEvent();
+        public event animationDoneEvent AnimationDone;
 
         public Animation(FileInfo[] files)
         {
+            AnimationDone += Animation_AnimationDone;
             List<Texture2D> tex = new List<Texture2D>();
             foreach (var file in files)
             {
@@ -30,6 +33,11 @@ namespace SiegeStorm
             FrameSpeed = 30;
         }
 
+        private void Animation_AnimationDone()
+        {
+
+        }
+
         internal void Draw(GameTime gameTime, Vector2 position)
         {
             currentTime += gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -38,7 +46,10 @@ namespace SiegeStorm
                 currentTime = 0;
                 CurrentFrame++;
                 if (CurrentFrame == FrameCount)
+                {
+                    AnimationDone();
                     CurrentFrame = 0;
+                }
             }
 
             SiegeStorm.SpriteBatch.Draw(Texture[CurrentFrame], new Rectangle(position.ToPoint(), new Point(height, height)), Color.White);

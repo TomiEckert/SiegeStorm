@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,28 +8,41 @@ using System.Threading.Tasks;
 
 namespace SiegeStorm.GameObjects.HUD
 {
-    class Healthbar
+    class Healthbar : GameObject
     {
         public int maxHealth;
-        public int currentHealth;
+        public float currentHealth;
 
         public Healthbar()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "healthbar"));
-            var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
-            var y = SiegeStorm.ScreenHeight / 10 * 5 - Texture.Height;
+            
         }
 
-        public void Update(int currentHealth)
+        public void SetHealth(int health, Vector2 position)
         {
-            this.currentHealth = currentHealth;
+            currentHealth = (float)health / maxHealth;
+
+            Texture2D rectangle = new Texture2D(SiegeStorm.Graphics.GraphicsDevice, 10, 1);
+
+            Color[] pixels = new Color[10];
+            Color fill = Color.Green;
+            for (int i = 0; i < pixels.Length; ++i)
+            {
+                pixels[i] = fill;
+
+                if (i + 1 > currentHealth * 10)
+                {
+                    fill = Color.Red;
+                }               
+            }
+            rectangle.SetData(pixels);
+            SetTexture(rectangle);
+            SetPosition(new Vector2(position.X + 80, position.Y + 30));
         }
 
-        public void Draw()
+        public override void Draw(GameTime gameTime)
         {
-            float healthPercentage = currentHealth / maxHealth;
-
-
+            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(Position.ToPoint(), new Point(150, 15)), Color.White);
         }
     }
 }
