@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SiegeStorm.Abstracts;
+using SiegeStorm.GameObjects.HUD;
 using SiegeStorm.GameObjects.Characters.Enemies;
 using SiegeStorm.GameObjects.Items;
 using SiegeStorm.Managers;
@@ -17,8 +18,11 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private Armor armor;
         private Weapon weapon;
         private Inventory inventory;
+        private Shop shop;
         private int currentLane;
         private Animation walk;
+        private Healthbar healthbar;
+        
         private Animation die;
 
         public Player(string name) : base(name)
@@ -38,6 +42,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
             walk = SiegeStorm.AnimationManager.GetAnimation("walk");
             die = SiegeStorm.AnimationManager.GetAnimation("die");
             
+            healthbar = new Healthbar();
         }
 
         public void SetVerticalPosition(int position)
@@ -74,6 +79,16 @@ namespace SiegeStorm.GameObjects.Characters.Players
         public void SetInventory(Inventory newInventory)
         {
             inventory = newInventory;
+        }
+
+        public void SetShop(Shop newShop)
+        {
+            shop = newShop;
+        }
+
+        public Shop GetShop()
+        {
+            return shop;
         }
 
         //Equipping item, changing corresponding stats (health / power)
@@ -176,6 +191,8 @@ namespace SiegeStorm.GameObjects.Characters.Players
                 wDown = false;
             }
 
+            healthbar.SetHealth(health, Position);
+
             // Player - Enemy collision
             for (int i = 0; i < SiegeStorm.EnemyManager.GetEnemies().Length; i++)
             {
@@ -200,6 +217,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
                 walk.Draw(gameTime, Position);
             }
             
+            healthbar.Draw(gameTime);
         }
     }
 }

@@ -55,8 +55,10 @@
     <Compile Include="FrameCounter.cs" />
     <Compile Include="GameCursor.cs" />
     <Compile Include="GameObjects\Characters\Enemies\Enemy.cs" />
+    <Compile Include="GameObjects\Characters\Players\Shop.cs" />
     <Compile Include="GameObjects\Characters\Players\Inventory.cs" />
     <Compile Include="GameObjects\Characters\Players\Player.cs" />
+    <Compile Include="GameObjects\HUD\Healthbar.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonSell.cs" />
@@ -205,7 +207,10 @@
     <Content Include="Content\Animation\Textures\anim_walk_23.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Animation\Textures\anim_enemyDefault_00.png">
+    <Content Include="Content\Animation\Textures\anim_enemyDefaultRight_00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Animation\Textures\anim_enemyDefaultLeft_00.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Animation\Textures\anim_die_00.png">

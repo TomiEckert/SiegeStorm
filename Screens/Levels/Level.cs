@@ -23,7 +23,7 @@ namespace SiegeStorm.GameScreens.Levels
 
         internal override void LoadContent()
         {
-            levelTop = SiegeStorm.ScreenHeight / 6;
+            levelTop = SiegeStorm.ScreenHeight / 7;
             for (int i = 0; i < 5; i++)
             {
                 lanes[i].SetPosition(levelTop * (2 + i) - levelTop / 2);
