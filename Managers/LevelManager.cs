@@ -134,6 +134,14 @@ namespace SiegeStorm.Managers
             return null;
         }
 
+        public void Unlock(string name)
+        {
+            if (levelData.ContainsKey(name))
+            {
+                levelData[name].Unlock();
+            }
+        }
+
         /// <summary>
         /// Returns the name of the level passed as parameter.
         /// IMPORTANT: Might return the wrong key. TRY NOT TO USE THIS.
