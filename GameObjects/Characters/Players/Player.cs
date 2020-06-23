@@ -45,8 +45,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
             walkRight = SiegeStorm.AnimationManager.GetAnimation("walk");
             walkLeft = SiegeStorm.AnimationManager.GetAnimation("walkLeft");
             die = SiegeStorm.AnimationManager.GetAnimation("die");
-            fightRight = SiegeStorm.AnimationManager.GetAnimation("playerFight");
-            fightLeft = SiegeStorm.AnimationManager.GetAnimation("fightLeft");
+            
             healthbar = new Healthbar();
         }
 
@@ -172,9 +171,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private bool wDown;
         private bool sDown;
         private bool alive = true;
-        public bool attacked = false;
 
-        private bool turn = false;
         public override void Update(GameTime gameTime)
         {
                // Player - Enemy collision
@@ -245,14 +242,13 @@ namespace SiegeStorm.GameObjects.Characters.Players
             
             if (Keyboard.GetState().IsKeyDown(Keys.F) && attacked == false)
             {
-                attacked = true;
+                if (SiegeStorm.EnemyManager.GetEnemies()[i].GetLane() == GetLane() &&
+                    SiegeStorm.EnemyManager.GetEnemies()[i].getPositionX() == (Position.X + Texture.Width))
+                {
+                    alive = false;
+                }
+
             }
-            if (Keyboard.GetState().IsKeyUp(Keys.F))
-            {
-                attacked = false;
-            }
-        
-           
 
         
 
@@ -267,33 +263,10 @@ namespace SiegeStorm.GameObjects.Characters.Players
             }
             else
             {
-                if (attacked)
-                {
-                    if (turn)
-                    {
-                        fightLeft.Draw(gameTime, Position);
-                    }
-                    else
-                    {
-                        fightRight.Draw(gameTime, Position);
-                    }
-
-                }
-                else
-                {
-                    if (!turn)
-                    {
-                        walkRight.Draw(gameTime, Position);
-
-                    }
-                    if(turn)
-                    {
-                        walkLeft.Draw(gameTime, Position);
-
-                    }
-
-                }        
-            }     
+                walk.Draw(gameTime, Position);
+            }
+            
+            healthbar.Draw(gameTime);
         }
     }
 }

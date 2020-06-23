@@ -58,7 +58,6 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         }
         private bool turn;
         public bool dead = false;
-        public bool clear = false;
         public override void Update(GameTime gameTime)
         {
 
@@ -87,34 +86,24 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
                     dead = true;
                 }
 
-            }
+        }
+        public override void Draw(GameTime gameTime)
+        {
             if (Position.X == (SiegeStorm.ScreenWidth - 180))
             {
-                turn = true;
+                die.Draw(gameTime, Position);
             }
             else if (Position.X == 0)
             {
                 turn = false;
             }
-
-        }
-        public override void Draw(GameTime gameTime)
-        {
-            if(dead)
+            if(turn)
             {
-                die.Draw(gameTime, Position);
+                walkLeft.Draw(gameTime, Position);
             }
             else
             {
-               
-                if (turn)
-                {
-                    walkLeft.Draw(gameTime, Position);
-                }
-                else
-                {
-                    walkRight.Draw(gameTime, Position);
-                }
+                walkRight.Draw(gameTime, Position);
             }
         }
         //TODO movement
