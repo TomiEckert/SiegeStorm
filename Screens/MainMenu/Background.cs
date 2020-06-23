@@ -5,12 +5,8 @@ namespace SiegeStorm.GameObjects.MainMenu
     internal class Background : GameObject
     {
         public Background()
-        {
-<<<<<<< Updated upstream:Screens/MainMenu/Background.cs
+        { 
             SetTexture(SiegeStorm.TextureManager.GetTexture(this, "bg"));
-=======
-            SetTexture(SiegeStorm.TextureManager.GetTexture("bg"));
->>>>>>> Stashed changes:GameObjects/MainMenu/Background.cs
             SetPosition(new Vector2(0, 0));
         }
 
