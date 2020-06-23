@@ -42,9 +42,12 @@ namespace SiegeStorm.GameObjects.Characters.Players
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;
             Vector2 position = new Vector2(x, y);
 
+            die = SiegeStorm.AnimationManager.GetAnimation("die");
             walkRight = SiegeStorm.AnimationManager.GetAnimation("walk");
             walkLeft = SiegeStorm.AnimationManager.GetAnimation("walkLeft");
-            die = SiegeStorm.AnimationManager.GetAnimation("die");
+
+            fightLeft = SiegeStorm.AnimationManager.GetAnimation("fightLeft");
+            fightRight = SiegeStorm.AnimationManager.GetAnimation("playerFight");
             
             healthbar = new Healthbar();
         }
@@ -171,7 +174,8 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private bool wDown;
         private bool sDown;
         private bool alive = true;
-
+        private bool turn = false;
+        public bool attacked = false;
         public override void Update(GameTime gameTime)
         {
                // Player - Enemy collision
@@ -239,18 +243,27 @@ namespace SiegeStorm.GameObjects.Characters.Players
                 wDown = false;
             }
 
-            
+            for (int i = 0; i < SiegeStorm.EnemyManager.GetEnemies().Length; i++)
+            {
+               
+                    if (SiegeStorm.EnemyManager.GetEnemies()[i].GetLane() == GetLane() &&
+                        SiegeStorm.EnemyManager.GetEnemies()[i].getPositionX() == (Position.X + Texture.Width) && SiegeStorm.EnemyManager.GetEnemies()[i].dead == false)
+                    {
+                        alive = false;
+                    }
+
+                
+            }
             if (Keyboard.GetState().IsKeyDown(Keys.F) && attacked == false)
             {
-                if (SiegeStorm.EnemyManager.GetEnemies()[i].GetLane() == GetLane() &&
-                    SiegeStorm.EnemyManager.GetEnemies()[i].getPositionX() == (Position.X + Texture.Width))
-                {
-                    alive = false;
-                }
-
+                attacked = true;
+            }
+            if (Keyboard.GetState().IsKeyUp(Keys.F))
+            {
+                attacked = false;
             }
 
-        
+
 
         }
 
@@ -263,7 +276,28 @@ namespace SiegeStorm.GameObjects.Characters.Players
             }
             else
             {
-                walk.Draw(gameTime, Position);
+                if (attacked)
+                {
+                    if(turn)
+                    {
+                        fightLeft.Draw(gameTime, Position);
+                    }
+                    else
+                    {
+                        fightRight.Draw(gameTime, Position);
+                    }
+                }
+                else
+                {
+                    if (turn)
+                    {
+                        walkLeft.Draw(gameTime, Position);
+                    }
+                    else
+                    {
+                        walkRight.Draw(gameTime, Position);
+                    }
+                }
             }
             
             healthbar.Draw(gameTime);
