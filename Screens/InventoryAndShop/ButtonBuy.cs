@@ -6,9 +6,9 @@ namespace SiegeStorm.GameObjects.InventoryAndShop
     {
         public ButtonBuy()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "playButton"));
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "ButtonBuy"));
             var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
-            var y = SiegeStorm.ScreenHeight / 10 * 5 - Texture.Height;
+            var y = SiegeStorm.ScreenHeight / 10 * 3 - Texture.Height;
             SetPosition(new Vector2(x, y));
         }
 

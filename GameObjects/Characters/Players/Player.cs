@@ -197,6 +197,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
   
             if (Keyboard.GetState().IsKeyDown(Keys.D) && Position.X < (SiegeStorm.ScreenWidth - Texture.Width))
             {
+                
                 SetPosition(new Vector2(Position.X + 5, Position.Y));
                // turn = false;
             }
