@@ -102,7 +102,7 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
                     dead = true;
                 }
             }
-            healthbar.SetHealth(health, Position);
+            healthbar.SetHealth(health, this.GetBaseHealth(), Position);
         }
         public override void Draw(GameTime gameTime)
         {
