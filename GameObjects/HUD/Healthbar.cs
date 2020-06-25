@@ -38,12 +38,14 @@ namespace SiegeStorm.GameObjects.HUD
             }
             rectangle.SetData(pixels);
             SetTexture(rectangle);
-            SetPosition(new Vector2(position.X + 80, position.Y + 30));
+            SetPosition(new Vector2(position.X + 60, position.Y + 20));
         }
 
         public override void Draw(GameTime gameTime)
         {
-            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(Position.ToPoint(), new Point(150, 15)), Color.White);
+            var w = SiegeStorm.ScreenWidth;
+            var h = SiegeStorm.ScreenHeight;
+            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(Position.ToPoint(), new Point(w/17, h/50)), Color.White);
         }
     }
 }
