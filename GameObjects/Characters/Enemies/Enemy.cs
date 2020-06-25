@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SiegeStorm.Abstracts;
+using SiegeStorm.GameObjects.HUD;
+
 
 namespace SiegeStorm.GameObjects.Characters.Enemies
 {
@@ -11,6 +13,8 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         private Animation walkLeft;
         private Animation walkRight;
         private Animation die;
+        private Healthbar healthbar;
+        private int health;
 
         public Enemy() : base("Enemy Lvl 1")
         {          
@@ -24,8 +28,9 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
 
             die = SiegeStorm.AnimationManager.GetAnimation("enemyDie");
             // SetPosition(new Vector2(x, y));
+            healthbar = new Healthbar();
         }
-   
+
         public void SetVerticalPosition(int position)
         {
             SetPosition(new Vector2(Position.X, position));
@@ -56,6 +61,17 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         {
             return currentLane;
         }
+
+        private void SetHealth()
+        {
+            this.health = this.GetBaseHealth();
+        }
+
+        private int getHealth()
+        {
+            return this.health;
+        }
+
         private bool turn;
         public bool dead = false;
         public override void Update(GameTime gameTime)
@@ -86,7 +102,7 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
                     dead = true;
                 }
             }
-
+            healthbar.SetHealth(health, Position);
         }
         public override void Draw(GameTime gameTime)
         {
@@ -110,6 +126,7 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
                     walkRight.Draw(gameTime, Position);
                 }
             }
+            healthbar.Draw(gameTime);
         }
         //TODO movement
         //TODO attack
