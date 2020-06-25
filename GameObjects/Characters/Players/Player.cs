@@ -20,12 +20,14 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private Inventory inventory;
         private Shop shop;
         private int currentLane;
+        private int speed;
+
+        //Animations
         private Animation walkRight;
         private Animation walkLeft;
         private Healthbar healthbar;
         private Animation fightRight;
         private Animation fightLeft;
-
         private Animation die;
 
         public Player(string name) : base(name)
@@ -36,89 +38,79 @@ namespace SiegeStorm.GameObjects.Characters.Players
             this.weapon = SiegeStorm.ItemManager.GetWeapon("Wooden Stick");
             this.SetHealth();
             this.SetPower();
-
-            //Position
-            var x = SiegeStorm.ScreenWidth / 6 - Texture.Width;
-            var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;
-            Vector2 position = new Vector2(x, y);
-
+            this.speed = 10;
+            healthbar = new Healthbar();
+            
+            //Animations
             die = SiegeStorm.AnimationManager.GetAnimation("die");
             walkRight = SiegeStorm.AnimationManager.GetAnimation("walkRight");
             walkLeft = SiegeStorm.AnimationManager.GetAnimation("walkLeft");
-
             fightLeft = SiegeStorm.AnimationManager.GetAnimation("fightLeft");
             fightRight = SiegeStorm.AnimationManager.GetAnimation("playerFight");
-            
-            healthbar = new Healthbar();
         }
 
-        public void SetVerticalPosition(int position)
+        //Getters
+        public Shop GetShop()
         {
-            SetPosition(new Vector2(Position.X, position));
+            return shop;
         }
-        public float getPositionX()
+        public float GetPositionX()
         {
             return Position.X;
         }
-
-        public void SetLane(int lane)
-        {
-            currentLane = lane;
-        }
-
         public int GetLane()
         {
             return currentLane;
         }
-
-        public void Heal()
+        public Inventory GetInventory()
         {
-            this.health = this.GetBaseHealth() + this.armor.GetStatValue();
+            return inventory;
         }
+        private int GetHealth()
+        {
+            return this.health;
+        }
+
+
         //Setters
+        public void SetLane(int lane)
+        {
+            currentLane = lane;
+        }
+        public void SetVerticalPosition(int position)
+        {
+            SetPosition(new Vector2(Position.X, position));
+        }
         private void SetHealth()
         {
             this.health = this.GetBaseHealth() + this.armor.GetStatValue();
         }
 
-        private void getDamage(int damage)
+        private void SetDamage(int damage)
         {
             this.health -= damage; 
         }
-
-        private int getHealth()
-        {
-            return this.health;
-        }
-
         private void SetPower()
         {
             this.power = this.GetBasePower() + this.weapon.GetStatValue();
         }
-
-        public Inventory GetInventory()
-        {
-            return inventory;
-        }
-
         public void SetInventory(Inventory newInventory)
         {
             inventory = newInventory;
         }
-
         public void SetShop(Shop newShop)
         {
             shop = newShop;
         }
-
-        public Shop GetShop()
-        {
-            return shop;
-        }
-
         public void AddItemToShop(Item item)
         {
             shop.AddItemToShop(item);
+        }
+
+        //Heal Cheat
+        public void Heal()
+        {
+            this.health = this.GetBaseHealth() + this.armor.GetStatValue();
         }
 
         //Equipping item, changing corresponding stats (health / power)
@@ -188,7 +180,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
                 if (SiegeStorm.EnemyManager.GetEnemies()[i].GetLane() == GetLane() &&
                     SiegeStorm.EnemyManager.GetEnemies()[i].getPositionX() < (Position.X + Texture.Width) && SiegeStorm.EnemyManager.GetEnemies()[i].getPositionX() > (Position.X - Texture.Width / 2) && SiegeStorm.EnemyManager.GetEnemies()[i].dead == false)
                 {
-                    this.getDamage(1);
+                    this.SetDamage(1);
                     if (this.health < 0)
                     {
                         this.health = 0;
@@ -202,13 +194,13 @@ namespace SiegeStorm.GameObjects.Characters.Players
             if (Keyboard.GetState().IsKeyDown(Keys.D) && Position.X < (SiegeStorm.ScreenWidth - Texture.Width))
             {
 
-                SetPosition(new Vector2(Position.X + 5, Position.Y));
+                SetPosition(new Vector2(Position.X + speed, Position.Y));
 
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.A) && Position.X > 0)
             {
-                SetPosition(new Vector2(Position.X - 5, Position.Y));
+                SetPosition(new Vector2(Position.X - speed, Position.Y));
                 right = false;
             }
 

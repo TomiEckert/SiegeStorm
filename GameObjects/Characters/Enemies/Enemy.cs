@@ -101,7 +101,7 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
             for (int i = 0; i < SiegeStorm.PlayerManager.GetPlayers().Length; i++)
             {
                 if (SiegeStorm.PlayerManager.GetPlayers()[i].GetLane() == GetLane() &&
-                    SiegeStorm.PlayerManager.GetPlayers()[i].getPositionX() > (Position.X - Texture.Width) && SiegeStorm.PlayerManager.GetPlayers()[i].getPositionX() < (Position.X + Texture.Width) && SiegeStorm.PlayerManager.GetPlayers()[i].attacked)
+                    SiegeStorm.PlayerManager.GetPlayers()[i].GetPositionX() > (Position.X - Texture.Width) && SiegeStorm.PlayerManager.GetPlayers()[i].GetPositionX() < (Position.X + Texture.Width) && SiegeStorm.PlayerManager.GetPlayers()[i].attacked)
                 {
                     getDamage(10);
                     if (health < 0)
