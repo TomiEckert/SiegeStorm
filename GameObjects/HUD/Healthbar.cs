@@ -29,12 +29,12 @@ namespace SiegeStorm.GameObjects.HUD
             Color fill = Color.Green;
             for (int i = 0; i < pixels.Length; ++i)
             {
-                pixels[i] = fill;
 
                 if (i + 1 > currentHealth * 10)
                 {
                     fill = Color.Red;
                 }               
+                pixels[i] = fill;
             }
             rectangle.SetData(pixels);
             SetTexture(rectangle);

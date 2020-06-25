@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using SiegeStorm.Abstracts;
 using SiegeStorm.GameObjects.HUD;
-
+using System;
 
 namespace SiegeStorm.GameObjects.Characters.Enemies
 {
@@ -15,9 +15,12 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         private Animation die;
         private Healthbar healthbar;
         private int health;
+        private int fullHealth;
 
         public Enemy() : base("Enemy Lvl 1")
-        {          
+        {
+            health = this.GetBaseHealth();
+
             //TODO set position
             var x = SiegeStorm.ScreenWidth - Texture.Width;
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height ;
@@ -29,6 +32,7 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
             die = SiegeStorm.AnimationManager.GetAnimation("enemyDie");
             // SetPosition(new Vector2(x, y));
             healthbar = new Healthbar();
+            fullHealth = this.health;
         }
 
         public void SetVerticalPosition(int position)
@@ -97,12 +101,22 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
             for (int i = 0; i < SiegeStorm.PlayerManager.GetPlayers().Length; i++)
             {
                 if (SiegeStorm.PlayerManager.GetPlayers()[i].GetLane() == GetLane() &&
-                    SiegeStorm.PlayerManager.GetPlayers()[i].getPositionX() > (Position.X - Texture.Width) && SiegeStorm.PlayerManager.GetPlayers()[i].attacked)
+                    SiegeStorm.PlayerManager.GetPlayers()[i].getPositionX() > (Position.X - Texture.Width) && SiegeStorm.PlayerManager.GetPlayers()[i].getPositionX() < (Position.X + Texture.Width) && SiegeStorm.PlayerManager.GetPlayers()[i].attacked)
                 {
-                    dead = true;
+                    getDamage(10);
+                    if (health < 0)
+                    {
+                        health = 0;
+                        dead = true;
+                    }
                 }
             }
-            healthbar.SetHealth(health, this.GetBaseHealth(), Position);
+
+            healthbar.SetHealth(health, this.fullHealth, Position);
+        }
+        private void getDamage(int damage)
+        {
+            this.health -= damage;
         }
         public override void Draw(GameTime gameTime)
         {
@@ -128,7 +142,5 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
             }
             healthbar.Draw(gameTime);
         }
-        //TODO movement
-        //TODO attack
     }
 }
