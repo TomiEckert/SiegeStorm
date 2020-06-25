@@ -61,12 +61,15 @@
     <Compile Include="GameObjects\HUD\Healthbar.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
+    <Compile Include="Screens\InventoryAndShop\ButtonEquip.cs" />
+    <Compile Include="Screens\InventoryAndShop\ButtonReturnINV.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonSell.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonBuy.cs" />
     <Compile Include="GameObjects\Items\Armor.cs" />
     <Compile Include="GameObjects\Items\Weapon.cs" />
     <Compile Include="Screens\InventoryAndShop\ItemButton.cs" />
     <Compile Include="Screens\Levels\Lane.cs" />
+    <Compile Include="Screens\Map\ButtonInvAndShop.cs" />
     <Compile Include="Screens\SettingsMenu\ButtonFullscreen.cs" />
     <Compile Include="Screens\MainMenu\ButtonLoad.cs" />
     <Compile Include="Screens\Levels\Level.cs" />
@@ -375,7 +378,9 @@
     <Content Include="Content\Armor.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Textures\ButtonBuy.png" />
+    <Content Include="Content\Textures\ButtonBuy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Textures\BuyButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -388,7 +393,9 @@
     <Content Include="Content\Textures\EquipButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Textures\SellButton.png" />
+    <Content Include="Content\Textures\SellButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Textures\OptionsButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

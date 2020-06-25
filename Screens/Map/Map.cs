@@ -8,6 +8,7 @@ namespace SiegeStorm.Screens
     {
         private List<Level> levels;
         private GameObjects.SettingsMenu.ButtonReturn buttonReturn;
+        private GameObjects.Map.ButtonInvAndShop buttonInvAndShop;
 
         public Map()
         {
@@ -31,6 +32,8 @@ namespace SiegeStorm.Screens
 
             buttonReturn = new GameObjects.SettingsMenu.ButtonReturn();
             AddObject(buttonReturn);
+            buttonInvAndShop = new GameObjects.Map.ButtonInvAndShop();
+            AddObject(buttonInvAndShop);
         }
     }
 }

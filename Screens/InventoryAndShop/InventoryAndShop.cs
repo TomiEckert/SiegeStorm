@@ -7,7 +7,8 @@ namespace SiegeStorm.Screens
 {
     internal class InventoryAndShop : GameScreen
     {
-        private GameObjects.SettingsMenu.ButtonReturn returnButton;
+        private GameObjects.InventoryAndShop.ButtonReturnINV returnButtonINV;
+        private GameObjects.InventoryAndShop.ButtonEquip buttonEquip;
         private GameObjects.InventoryAndShop.ButtonBuy buttonBuy;
         private GameObjects.InventoryAndShop.ButtonSell buttonSell;
         private List<GameObjects.InventoryAndShop.ItemButton> itemButtons = new List<GameObjects.InventoryAndShop.ItemButton>();
@@ -20,6 +21,10 @@ namespace SiegeStorm.Screens
             AddObject(buttonSell);
             buttonBuy = new GameObjects.InventoryAndShop.ButtonBuy();
             AddObject(buttonBuy);
+            buttonEquip = new GameObjects.InventoryAndShop.ButtonEquip();
+            AddObject(buttonEquip);
+            returnButtonINV = new GameObjects.InventoryAndShop.ButtonReturnINV();
+            AddObject(returnButtonINV);
 
         }
 
