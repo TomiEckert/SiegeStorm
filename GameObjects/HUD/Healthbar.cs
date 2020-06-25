@@ -18,8 +18,9 @@ namespace SiegeStorm.GameObjects.HUD
             
         }
 
-        public void SetHealth(int health, Vector2 position)
+        public void SetHealth(int health, int maxHealth, Vector2 position)
         {
+            this.maxHealth = maxHealth; 
             currentHealth = (float)health / maxHealth;
 
             Texture2D rectangle = new Texture2D(SiegeStorm.Graphics.GraphicsDevice, 10, 1);

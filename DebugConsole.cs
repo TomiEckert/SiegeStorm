@@ -94,7 +94,18 @@ namespace SiegeStorm
             if (commands.ContainsKey(command.ToLower()))
                 commands[command.ToLower()].Invoke(this, new object[] { args });
         }
+        [DebugCommand("Heals all players.", "HEAL")]
+        private void Heal(string[] args)
+        {
 
+            var players = SiegeStorm.PlayerManager.GetPlayers();
+            foreach (var player in players)
+            {
+                player.Heal();
+            }
+                      
+
+        }
         [DebugCommand("Prints out the current game screen, or switches to the specified screen if it is passed as an argument and exists.", "screen MainMenu")]
         private void Screen(string[] args)
         {
