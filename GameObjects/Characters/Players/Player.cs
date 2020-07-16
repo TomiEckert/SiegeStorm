@@ -20,9 +20,14 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private Inventory inventory;
         private Shop shop;
         private int currentLane;
-        private Animation walk;
+        private int speed;
+
+        //Animations
+        private Animation walkRight;
+        private Animation walkLeft;
         private Healthbar healthbar;
-        
+        private Animation fightRight;
+        private Animation fightLeft;
         private Animation die;
 
         public Player(string name) : base(name)
@@ -33,67 +38,79 @@ namespace SiegeStorm.GameObjects.Characters.Players
             this.weapon = SiegeStorm.ItemManager.GetWeapon("Wooden Stick");
             this.SetHealth();
             this.SetPower();
-
-            //Position
-            var x = SiegeStorm.ScreenWidth / 6 - Texture.Width;
-            var y = SiegeStorm.ScreenHeight / 3 - Texture.Height;
-            Vector2 position = new Vector2(x, y);
-
-            walk = SiegeStorm.AnimationManager.GetAnimation("walk");
-            die = SiegeStorm.AnimationManager.GetAnimation("die");
-            
+            this.speed = 10;
             healthbar = new Healthbar();
+            
+            //Animations
+            die = SiegeStorm.AnimationManager.GetAnimation("die");
+            walkRight = SiegeStorm.AnimationManager.GetAnimation("walkRight");
+            walkLeft = SiegeStorm.AnimationManager.GetAnimation("walkLeft");
+            fightLeft = SiegeStorm.AnimationManager.GetAnimation("fightLeft");
+            fightRight = SiegeStorm.AnimationManager.GetAnimation("playerFight");
         }
 
-        public void SetVerticalPosition(int position)
+        //Getters
+        public Shop GetShop()
         {
-            SetPosition(new Vector2(Position.X, position));
+            return shop;
         }
-
-        public void SetLane(int lane)
+        public float GetPositionX()
         {
-            currentLane = lane;
+            return Position.X;
         }
-
         public int GetLane()
         {
             return currentLane;
         }
+        public Inventory GetInventory()
+        {
+            return inventory;
+        }
+        private int GetHealth()
+        {
+            return this.health;
+        }
+
 
         //Setters
+        public void SetLane(int lane)
+        {
+            currentLane = lane;
+        }
+        public void SetVerticalPosition(int position)
+        {
+            SetPosition(new Vector2(Position.X, position));
+        }
         private void SetHealth()
         {
             this.health = this.GetBaseHealth() + this.armor.GetStatValue();
         }
 
+        private void SetDamage(int damage)
+        {
+            this.health -= damage; 
+        }
         private void SetPower()
         {
             this.power = this.GetBasePower() + this.weapon.GetStatValue();
         }
-
-        public Inventory GetInventory()
-        {
-            return inventory;
-        }
-
         public void SetInventory(Inventory newInventory)
         {
             inventory = newInventory;
         }
-
         public void SetShop(Shop newShop)
         {
             shop = newShop;
         }
-
-        public Shop GetShop()
-        {
-            return shop;
-        }
-
         public void AddItemToShop(Item item)
         {
             shop.AddItemToShop(item);
+        }
+
+        //Heal Cheat
+        public void Heal()
+        {
+            this.health = this.GetBaseHealth() + this.armor.GetStatValue();
         }
 
         //Equipping item, changing corresponding stats (health / power)
@@ -153,17 +170,44 @@ namespace SiegeStorm.GameObjects.Characters.Players
         private bool wDown;
         private bool sDown;
         private bool alive = true;
+        private bool right = true;
+        public bool attacked = false;
 
-        public override void Update(GameTime gameTime)
+        public void Collison()
+        {
+            for (int i = 0; i < SiegeStorm.EnemyManager.GetEnemies().Length; i++)
+            {
+                if (SiegeStorm.EnemyManager.GetEnemies()[i].GetLane() == GetLane() &&
+                    SiegeStorm.EnemyManager.GetEnemies()[i].getPositionX() < (Position.X + Texture.Width) && SiegeStorm.EnemyManager.GetEnemies()[i].getPositionX() > (Position.X - Texture.Width / 2) && SiegeStorm.EnemyManager.GetEnemies()[i].dead == false)
+                {
+                    this.SetDamage(1);
+                    if (this.health < 0)
+                    {
+                        this.health = 0;
+                    }
+                }
+            }
+        }
+
+        public void Movement()
         {
             if (Keyboard.GetState().IsKeyDown(Keys.D) && Position.X < (SiegeStorm.ScreenWidth - Texture.Width))
             {
-                SetPosition(new Vector2(Position.X + 5, Position.Y));
+
+                SetPosition(new Vector2(Position.X + speed, Position.Y));
+
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.A) && Position.X > 0)
             {
-                SetPosition(new Vector2(Position.X - 5, Position.Y));
+                SetPosition(new Vector2(Position.X - speed, Position.Y));
+                right = false;
+            }
+
+
+            if (Keyboard.GetState().IsKeyUp(Keys.A))
+            {
+                right = true;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.W) && !wDown)
@@ -195,31 +239,66 @@ namespace SiegeStorm.GameObjects.Characters.Players
             {
                 wDown = false;
             }
+        }
 
-            healthbar.SetHealth(health, Position);
-
-            // Player - Enemy collision
-            for (int i = 0; i < SiegeStorm.EnemyManager.GetEnemies().Length; i++)
+        public void Attack()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.F) && attacked == false)
             {
-                if (SiegeStorm.EnemyManager.GetEnemies()[i].GetLane() == GetLane() &&
-                    SiegeStorm.EnemyManager.GetEnemies()[i].getPositionX() == (Position.X + Texture.Width))
-                {
-                    alive = false;
-                }
-
+                attacked = true;
             }
+            if (Keyboard.GetState().IsKeyUp(Keys.F))
+            {
+                attacked = false;
+            }
+        }
+        public override void Update(GameTime gameTime)
+        {
+
+            alive = health == 0 ? false : true;
+
+            if (!alive)
+                return;
+
+            this.Collison();
+            this.Movement();
+            this.Attack();
+
+            healthbar.SetHealth(health, this.GetBaseHealth() + this.armor.GetStatValue(), Position);
 
         }
 
         public override void Draw(GameTime gameTime)
         {
-            if(alive == false)
+            healthbar.Draw(gameTime);
+            if (alive == false)
             {
                 die.Draw(gameTime, Position);
             }
             else
             {
-                walk.Draw(gameTime, Position);
+                if (attacked)
+                {
+                    if(!right)
+                    {
+                        fightLeft.Draw(gameTime, Position);
+                    }
+                    else
+                    {
+                        fightRight.Draw(gameTime, Position);
+                    }
+                }
+                else
+                {
+                    if (!right)
+                    {
+                        walkLeft.Draw(gameTime, Position);
+                    }
+                    else
+                    {
+                        walkRight.Draw(gameTime, Position);
+                    }
+                }
             }
             
             healthbar.Draw(gameTime);

@@ -18,8 +18,9 @@ namespace SiegeStorm.GameObjects.HUD
             
         }
 
-        public void SetHealth(int health, Vector2 position)
+        public void SetHealth(int health, int maxHealth, Vector2 position)
         {
+            this.maxHealth = maxHealth; 
             currentHealth = (float)health / maxHealth;
 
             Texture2D rectangle = new Texture2D(SiegeStorm.Graphics.GraphicsDevice, 10, 1);
@@ -28,21 +29,23 @@ namespace SiegeStorm.GameObjects.HUD
             Color fill = Color.Green;
             for (int i = 0; i < pixels.Length; ++i)
             {
-                pixels[i] = fill;
 
                 if (i + 1 > currentHealth * 10)
                 {
                     fill = Color.Red;
                 }               
+                pixels[i] = fill;
             }
             rectangle.SetData(pixels);
             SetTexture(rectangle);
-            SetPosition(new Vector2(position.X + 80, position.Y + 30));
+            SetPosition(new Vector2(position.X + 60, position.Y + 20));
         }
 
         public override void Draw(GameTime gameTime)
         {
-            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(Position.ToPoint(), new Point(150, 15)), Color.White);
+            var w = SiegeStorm.ScreenWidth;
+            var h = SiegeStorm.ScreenHeight;
+            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(Position.ToPoint(), new Point(w/17, h/50)), Color.White);
         }
     }
 }

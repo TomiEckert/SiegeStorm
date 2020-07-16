@@ -6,7 +6,7 @@ namespace SiegeStorm.GameObjects.InventoryAndShop
     {
         public ButtonSell()
         {
-            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "playButton"));
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "SellButton"));
             var x = SiegeStorm.ScreenWidth / 2 - Texture.Width / 2;
             var y = SiegeStorm.ScreenHeight / 10 * 5 - Texture.Height;
             SetPosition(new Vector2(x, y));

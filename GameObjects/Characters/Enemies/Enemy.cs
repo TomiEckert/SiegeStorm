@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SiegeStorm.Abstracts;
+using SiegeStorm.GameObjects.HUD;
+using System;
 
 namespace SiegeStorm.GameObjects.Characters.Enemies
 {
@@ -10,9 +12,15 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         private Vector2 position;
         private Animation walkLeft;
         private Animation walkRight;
+        private Animation die;
+        private Healthbar healthbar;
+        private int health;
+        private int fullHealth;
 
         public Enemy() : base("Enemy Lvl 1")
-        {          
+        {
+            health = this.GetBaseHealth();
+
             //TODO set position
             var x = SiegeStorm.ScreenWidth - Texture.Width;
             var y = SiegeStorm.ScreenHeight / 3 - Texture.Height ;
@@ -20,9 +28,13 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
             position = new Vector2(x, y);
             walkLeft = SiegeStorm.AnimationManager.GetAnimation("enemyDefaultLeft");
             walkRight = SiegeStorm.AnimationManager.GetAnimation("enemyDefaultRight");
+
+            die = SiegeStorm.AnimationManager.GetAnimation("enemyDie");
             // SetPosition(new Vector2(x, y));
+            healthbar = new Healthbar();
+            fullHealth = this.health;
         }
-   
+
         public void SetVerticalPosition(int position)
         {
             SetPosition(new Vector2(Position.X, position));
@@ -53,7 +65,19 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
         {
             return currentLane;
         }
+
+        private void SetHealth()
+        {
+            this.health = this.GetBaseHealth();
+        }
+
+        private int getHealth()
+        {
+            return this.health;
+        }
+
         private bool turn;
+        public bool dead = false;
         public override void Update(GameTime gameTime)
         {
 
@@ -74,29 +98,49 @@ namespace SiegeStorm.GameObjects.Characters.Enemies
                 SetPosition(new Vector2(Position.X + 5, Position.Y));
             }
 
+            for (int i = 0; i < SiegeStorm.PlayerManager.GetPlayers().Length; i++)
+            {
+                if (SiegeStorm.PlayerManager.GetPlayers()[i].GetLane() == GetLane() &&
+                    SiegeStorm.PlayerManager.GetPlayers()[i].GetPositionX() > (Position.X - Texture.Width) && SiegeStorm.PlayerManager.GetPlayers()[i].GetPositionX() < (Position.X + Texture.Width) && SiegeStorm.PlayerManager.GetPlayers()[i].attacked)
+                {
+                    getDamage(10);
+                    if (health < 0)
+                    {
+                        health = 0;
+                        dead = true;
+                    }
+                }
+            }
 
+            healthbar.SetHealth(health, this.fullHealth, Position);
+        }
+        private void getDamage(int damage)
+        {
+            this.health -= damage;
         }
         public override void Draw(GameTime gameTime)
         {
-            if (Position.X == (SiegeStorm.ScreenWidth - 180))
+            if (dead)
             {
-                turn = true;
-            }
-            else if (Position.X == 0)
-            {
-                turn = false;
-            }
-            if(turn)
-            {
-                walkLeft.Draw(gameTime, Position);
+                die.Draw(gameTime, Position);
             }
             else
             {
-                walkRight.Draw(gameTime, Position);
+             if (Position.X == 0)
+             {
+                turn = false;
+             }
+                if(turn)
+                {
+                    walkLeft.Draw(gameTime, Position);
+                }
+                else
+                {
+
+                    walkRight.Draw(gameTime, Position);
+                }
             }
-            
+            healthbar.Draw(gameTime);
         }
-        //TODO movement
-        //TODO attack
     }
 }
