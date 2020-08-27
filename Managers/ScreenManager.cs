@@ -44,7 +44,7 @@ namespace SiegeStorm.Managers
             gameScreens.Add("Map", new Screens.Map());
             gameScreens.Add("Death", new Screens.Death());
             gameScreens.Add("InventoryAndShop", new Screens.InventoryAndShop());
-
+            gameScreens.Add("HowToPlay", new Screens.HowToPlay());
             // TODO manually add gameScreens and set current to MainMenu
 
             foreach (var gameScreen in gameScreens)

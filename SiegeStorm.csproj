@@ -70,8 +70,12 @@
     <Compile Include="GameObjects\Items\Weapon.cs" />
     <Compile Include="Screens\InventoryAndShop\ItemButton.cs" />
     <Compile Include="Screens\Levels\Lane.cs" />
+    <Compile Include="Screens\MainMenu\Controls.cs" />
+    <Compile Include="Screens\MainMenu\ButtonStartReal.cs" />
+    <Compile Include="Screens\MainMenu\HowToPlay.cs" />
     <Compile Include="Screens\Map\Background.cs" />
     <Compile Include="Screens\Map\ButtonInvAndShop.cs" />
+    <Compile Include="Screens\SettingsMenu\Background.cs" />
     <Compile Include="Screens\SettingsMenu\ButtonFullscreen.cs" />
     <Compile Include="Screens\MainMenu\ButtonLoad.cs" />
     <Compile Include="Screens\Levels\Level.cs" />
@@ -81,6 +85,8 @@
     <Compile Include="Screens\SettingsMenu\ButtonFPS.cs" />
     <Compile Include="Screens\Map\MapNode.cs" />
     <Compile Include="Screens\MainMenu\Background.cs" />
+    <Compile Include="Screens\SettingsMenu\FpsCounterText.cs" />
+    <Compile Include="Screens\SettingsMenu\FullScreenText.cs" />
     <Compile Include="Screens\SettingsMenu\ButtonReturn.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
@@ -384,6 +390,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Textures\BuyButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\controls.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\FpsCounterText.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\FullscreenText.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Textures\DisabledButton.png">
