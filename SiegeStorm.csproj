@@ -61,6 +61,7 @@
     <Compile Include="GameObjects\HUD\Healthbar.cs" />
     <Compile Include="Managers\AnimationManager.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
+    <Compile Include="Screens\Death\Death.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonEquip.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonReturnINV.cs" />
     <Compile Include="Screens\InventoryAndShop\ButtonSell.cs" />
