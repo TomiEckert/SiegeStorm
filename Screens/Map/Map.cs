@@ -9,6 +9,8 @@ namespace SiegeStorm.Screens
         private List<Level> levels;
         private GameObjects.SettingsMenu.ButtonReturn buttonReturn;
         private GameObjects.Map.ButtonInvAndShop buttonInvAndShop;
+        private GameObjects.Map.Background bg;
+
 
         public Map()
         {
@@ -17,7 +19,14 @@ namespace SiegeStorm.Screens
 
         internal override void LoadContent()
         {
-            int posX = SiegeStorm.ScreenWidth / 4;
+            bg = new GameObjects.Map.Background();
+            AddObject(bg);
+            buttonReturn = new GameObjects.SettingsMenu.ButtonReturn();
+            AddObject(buttonReturn);
+            buttonInvAndShop = new GameObjects.Map.ButtonInvAndShop();
+            AddObject(buttonInvAndShop);
+
+            int posX = SiegeStorm.ScreenWidth / 3;
             int posY = SiegeStorm.ScreenHeight / 4;
             foreach (var level in levels)
             {
@@ -29,11 +38,6 @@ namespace SiegeStorm.Screens
                     posY += SiegeStorm.ScreenHeight / 4;
                 }
             }
-
-            buttonReturn = new GameObjects.SettingsMenu.ButtonReturn();
-            AddObject(buttonReturn);
-            buttonInvAndShop = new GameObjects.Map.ButtonInvAndShop();
-            AddObject(buttonInvAndShop);
         }
     }
 }

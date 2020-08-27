@@ -69,6 +69,7 @@
     <Compile Include="GameObjects\Items\Weapon.cs" />
     <Compile Include="Screens\InventoryAndShop\ItemButton.cs" />
     <Compile Include="Screens\Levels\Lane.cs" />
+    <Compile Include="Screens\Map\Background.cs" />
     <Compile Include="Screens\Map\ButtonInvAndShop.cs" />
     <Compile Include="Screens\SettingsMenu\ButtonFullscreen.cs" />
     <Compile Include="Screens\MainMenu\ButtonLoad.cs" />
@@ -394,6 +395,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Textures\InvAndShop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Textures\SellButton.png">
