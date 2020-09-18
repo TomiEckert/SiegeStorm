@@ -11,7 +11,7 @@ namespace SiegeStorm.GameObjects.Map
         {
             this.level = level;
             //TODO set texture
-            SetTexture(SiegeStorm.TextureManager.GetTexture(this));
+            SetTexture(SiegeStorm.TextureManager.GetTexture(this, "fullscreenButton"));
             //Set position
             var x = (int)( posX  - Texture.Width);
             var y = (int)( posY - Texture.Height);

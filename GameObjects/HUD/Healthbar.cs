@@ -45,7 +45,7 @@ namespace SiegeStorm.GameObjects.HUD
         {
             var w = SiegeStorm.ScreenWidth;
             var h = SiegeStorm.ScreenHeight;
-            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(Position.ToPoint(), new Point(w/17, h/50)), Color.White);
+            SiegeStorm.SpriteBatch.Draw(Texture, new Rectangle(Position.ToPoint(), new Point(w/17, 15)), Color.White);
         }
     }
 }

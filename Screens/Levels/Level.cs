@@ -13,6 +13,11 @@ namespace SiegeStorm.GameScreens.Levels
 
         public Level(Lane[] lanes, int enemiesPerWave)
         {
+            Init(lanes, enemiesPerWave);
+        }
+
+        internal void Init(Lane[] lanes, int enemiesPerWave)
+        {
             this.lanes = lanes;
             foreach (var lane in lanes)
             {
@@ -20,7 +25,6 @@ namespace SiegeStorm.GameScreens.Levels
             }
             this.enemiesPerWave = enemiesPerWave;
         }
-
         internal override void LoadContent()
         {
             levelTop = SiegeStorm.ScreenHeight / 7;
@@ -34,6 +38,14 @@ namespace SiegeStorm.GameScreens.Levels
         {
             var player = SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault();
             player.SetVerticalPosition(lanes[player.GetLane()].GetPosition());
+
+            if (player.GetHealth() == 0)
+            {
+                LoadContent();
+                
+                player.SetHealth();
+                SiegeStorm.ScreenManager.ChangeScreenTo("MainMenu");
+            };
             
 
             for (int i = 0; i < 5; i++)
@@ -63,6 +75,7 @@ namespace SiegeStorm.GameScreens.Levels
         {
             AddObject(SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault());
             SiegeStorm.PlayerManager.GetPlayers().FirstOrDefault().SetLane(0);
+            
             for (int i = 0; i < 5; i++)
             {
                 AddObject(SiegeStorm.EnemyManager.GetEnemies()[i]);

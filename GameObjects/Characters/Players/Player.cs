@@ -54,6 +54,10 @@ namespace SiegeStorm.GameObjects.Characters.Players
         {
             return shop;
         }
+        public int GetHealth()
+        {
+            return health;
+        }
         public float GetPositionX()
         {
             return Position.X;
@@ -66,11 +70,6 @@ namespace SiegeStorm.GameObjects.Characters.Players
         {
             return inventory;
         }
-        private int GetHealth()
-        {
-            return this.health;
-        }
-
 
         //Setters
         public void SetLane(int lane)
@@ -81,7 +80,7 @@ namespace SiegeStorm.GameObjects.Characters.Players
         {
             SetPosition(new Vector2(Position.X, position));
         }
-        private void SetHealth()
+        public void SetHealth()
         {
             this.health = this.GetBaseHealth() + this.armor.GetStatValue();
         }
@@ -258,7 +257,9 @@ namespace SiegeStorm.GameObjects.Characters.Players
             alive = health == 0 ? false : true;
 
             if (!alive)
+            {
                 return;
+            }
 
             this.Collison();
             this.Movement();
